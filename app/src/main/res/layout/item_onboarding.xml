@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center_horizontal"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/imgOnboarding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pic_onboard1"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_above="@+id/tvDesc"
+        android:text="Membantu gugus tugas COVID-19 untuk mengontrol perkembangan ODP dalam masa karantina mandiri"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="12sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="118dp"
+        android:textColor="@android:color/black"
+        android:text="Memonitoring perkembangan pasien ODP dengan mengetahui kondisi immunitas tubuh pasien dan memastikan pasien tetap berada dirumah selama masa karinta mandiri."/>
+</RelativeLayout>
