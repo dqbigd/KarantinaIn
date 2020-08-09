@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuLoginActivity"
+    tools:context=".LoginRegister.MenuLoginActivity"
     android:background="@android:color/white"
     android:gravity="center_horizontal"
     android:padding="24dp">
@@ -50,7 +50,7 @@
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:background="@drawable/bg_white_border_green_rounded"
             android:text="Daftar"
             android:textAllCaps="false"
@@ -61,7 +61,7 @@
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:background="@drawable/bg_green_rounded"
             android:text="Masuk"
             android:textAllCaps="false"
