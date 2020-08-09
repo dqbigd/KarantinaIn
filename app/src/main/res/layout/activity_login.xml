@@ -114,6 +114,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/daftar_disini"
         android:textColor="@color/colorPrimary"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

@@ -20,9 +20,11 @@
         <item>Laki - laki</item>
         <item>Perempuan</item>
     </string-array>
-    <string-array name="spin_age">
-        <item></item>
-        <item></item>
+    <string-array name="spin_age">\
+        <item>6 - 18 tahun</item>
+        <item>31 - 45 tahun</item>
+        <item>46 - 60 tahun</item>
+        <item>>60 tahun</item>
     </string-array>
     <string-array name="spin_indication">
         <item>Batuk</item>

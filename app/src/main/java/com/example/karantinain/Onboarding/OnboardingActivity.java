@@ -14,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.karantinain.Login.MenuLoginActivity;
+import com.example.karantinain.MainActivity;
 import com.example.karantinain.R;
+import com.example.karantinain.Utils.SharedPrefManager;
 
 import java.util.ArrayList;
 
@@ -34,7 +36,11 @@ public class OnboardingActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnPrevious = findViewById(R.id.btnPrevious);
 
-        btnPrevious.setVisibility(View.VISIBLE);
+        if (SharedPrefManager.getKeySignInStatus(getBaseContext())) {
+            startActivity(new Intent(getBaseContext(), MainActivity.class));
+            finish();
+        }
+
         setupOnboardingItems();
 
         vpOnboarding = findViewById(R.id.vpOnboarding);
