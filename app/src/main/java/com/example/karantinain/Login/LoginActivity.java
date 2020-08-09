@@ -1,4 +1,4 @@
-package com.example.karantinain.LoginRegister;
+package com.example.karantinain.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.karantinain.Register.RegisterActivity;
 import com.example.karantinain.R;
 
 public class LoginActivity extends AppCompatActivity {

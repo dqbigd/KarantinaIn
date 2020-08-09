@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.karantinain.LoginRegister.MenuLoginActivity;
+import com.example.karantinain.Login.MenuLoginActivity;
 import com.example.karantinain.R;
 
 import java.util.ArrayList;

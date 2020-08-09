@@ -11,4 +11,27 @@
     <string name="login_sekarang">Login Sekarang</string>
     <string name="daftar_disini">Daftar Disini</string>
     <string name="belum_punya_akun_karantinain">Belum punya akun KarantinaIn?</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="usia">Usia</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+
+<!--    kumpulan array-->
+    <string-array name="spin_gender">
+        <item>Laki - laki</item>
+        <item>Perempuan</item>
+    </string-array>
+    <string-array name="spin_age">
+        <item></item>
+        <item></item>
+    </string-array>
+    <string-array name="spin_indication">
+        <item>Batuk</item>
+        <item>Demam</item>
+        <item>Sesak Napas</item>
+        <item>Pilek</item>
+        <item>Sakit Tenggorokan</item>
+        <item>Sakit Kepala</item>
+        <item>Mual</item>
+        <item>Lainnya</item>
+    </string-array>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.karantinain.LoginRegister;
+package com.example.karantinain.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.karantinain.Register.RegisterActivity;
 import com.example.karantinain.R;
 
 public class MenuLoginActivity extends AppCompatActivity {
