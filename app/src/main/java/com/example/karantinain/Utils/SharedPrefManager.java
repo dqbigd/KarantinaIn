@@ -9,12 +9,12 @@ public class SharedPrefManager {
     static final String KEY_ACCOUNT_PASSWORD = "account_password";
     static final String KEY_SIGNIN_STATUS = "signin_status";
     static final String KEY_TOKEN = "token";
-//    static final String KEY_SIGNIN_AS = "signin_as";
-//    static final String KEY_PROFILE_NICKNAME = "profile_nickname";
-//    static final String KEY_PROFILE_FULLNAME = "profile_fullname";
-//    static final String KEY_PROFILE_NIM = "profile_nim";
-//    static final String KEY_PROFILE_JURUSAN = "profile_jurusan";
-//    static final String KEY_PROFILE_IMAGE = "profile_img";
+    static final String KEY_PROFILE_USERNAME = "profile_username";
+    static final String KEY_PROFILE_FULLNAME = "profile_fullname";
+    static final String KEY_PROFILE_PHONE = "profile_phone";
+    static final String KEY_PROFILE_GENDER = "profile_gender";
+    static final String KEY_PROFILE_AGE = "profile_age";
+    static final String KEY_PROFILE_INDICATION = "profile_indication";
 
     private static SharedPreferences getSharedPreference(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -52,33 +52,38 @@ public class SharedPrefManager {
         return getSharedPreference(context).getString(KEY_TOKEN, "");
     }
 
-//    public static void setProfile(Context context, String fullname, String nickname, String nim, String jurusan, String image) {
-//        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-//        editor.putString(KEY_PROFILE_FULLNAME, fullname);
-//        editor.putString(KEY_PROFILE_NICKNAME, nickname);
-//        editor.putString(KEY_PROFILE_NIM, nim);
-//        editor.putString(KEY_PROFILE_JURUSAN, jurusan);
-//        editor.putString(KEY_PROFILE_IMAGE, image);
-//        editor.apply();
-//    }
-//
-//    public static String getNickNameProfile(Context context) {
-//        return getSharedPreference(context).getString(KEY_PROFILE_NICKNAME, "");
-//    }
-//
-//    public static String getFullNameProfile(Context context) {
-//        return getSharedPreference(context).getString(KEY_PROFILE_FULLNAME, "");
-//    }
-//
-//    public static String getNimProfile(Context context) {
-//        return getSharedPreference(context).getString(KEY_PROFILE_NIM, "");
-//    }
-//
-//    public static String getJurusanProfile(Context context) {
-//        return getSharedPreference(context).getString(KEY_PROFILE_JURUSAN, "");
-//    }
-//
-//    public static String getImageProfile(Context context) {
-//        return getSharedPreference(context).getString(KEY_PROFILE_IMAGE, "");
-//    }
+    public static void setProfile(Context context, String username,String fullname, String phone, String gender, String age, String indication) {
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_PROFILE_USERNAME, username);
+        editor.putString(KEY_PROFILE_FULLNAME, fullname);
+        editor.putString(KEY_PROFILE_PHONE, phone);
+        editor.putString(KEY_PROFILE_GENDER, gender);
+        editor.putString(KEY_PROFILE_AGE, age);
+        editor.putString(KEY_PROFILE_INDICATION, indication);
+        editor.apply();
+    }
+
+    public static String getUserNameProfile(Context context) {
+        return getSharedPreference(context).getString(KEY_PROFILE_USERNAME, "");
+    }
+
+    public static String getFullNameProfile(Context context) {
+        return getSharedPreference(context).getString(KEY_PROFILE_FULLNAME, "");
+    }
+
+    public static String getPhoneProfile(Context context) {
+        return getSharedPreference(context).getString(KEY_PROFILE_PHONE, "");
+    }
+
+    public static String getGenderProfile(Context context) {
+        return getSharedPreference(context).getString(KEY_PROFILE_GENDER, "");
+    }
+
+    public static String getAgeProfile(Context context) {
+        return getSharedPreference(context).getString(KEY_PROFILE_AGE, "");
+    }
+
+    public static String getIndicationProfile(Context context) {
+        return getSharedPreference(context).getString(KEY_PROFILE_INDICATION, "");
+    }
 }

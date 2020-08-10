@@ -3,6 +3,7 @@ package com.example.karantinain.Login;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
@@ -107,15 +109,13 @@ public class LoginActivity extends AppCompatActivity {
                         String token = response.body().getData();
 
                         SharedPrefManager.setLoggedInStatus(getBaseContext(),true, token);
-
-                        startActivity(new Intent(getBaseContext(), MainActivity.class));
-                        finish();
+                        loadData(token);
+//                        startActivity(new Intent(getBaseContext(), MainActivity.class));
+//                        finish();
                     }else if(response.body().getMessage().equals("Not found.")){
                         Toast.makeText(LoginActivity.this, response.body().getData(), Toast.LENGTH_SHORT).show();
-                    }else if(response.body().getMessage().equals("Invalid request!")){
-                        Toast.makeText(LoginActivity.this, response.body().getData(), Toast.LENGTH_SHORT).show();
                     }
-                } else {
+                }else {
                     Toast.makeText(LoginActivity.this, "Mohon cek username atau password anda", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -126,5 +126,36 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("TAG", "onFailure: "+t.getMessage());
             }
         });
+    }
+
+    private void loadData(String token) {
+        Call<ProfileResponse> call = InitRetrofit.getInstance().profile(token);
+        call.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (response.isSuccessful()){
+
+                    String username = response.body().getData().getUsername();
+                    String fullname = response.body().getData().getFullname();
+                    String phone = response.body().getData().getPhoneNumber();
+                    String gender = response.body().getData().getGender();
+                    String age = response.body().getData().getAge();
+                    String indication = response.body().getData().getIndication();
+
+                    Log.d("Success LoadData ", response.body().getData().getFullname());
+                    startActivity(new Intent(getBaseContext(), MainActivity.class));
+                    finish();
+                    SharedPrefManager.setProfile(getApplicationContext(), username, fullname, phone, gender, age, indication);
+                }else {
+                    Toast.makeText(LoginActivity.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this , t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

@@ -22,6 +22,7 @@
     </string-array>
     <string-array name="spin_age">\
         <item>6 - 18 tahun</item>
+        <item>19 - 30 tahun</item>
         <item>31 - 45 tahun</item>
         <item>46 - 60 tahun</item>
         <item>>60 tahun</item>
@@ -36,7 +37,17 @@
         <item>Mual</item>
         <item>Lainnya</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name">Name</string>
+    <string name="batuk">Batuk</string>
+    <string name="demam">Demam</string>
+    <string name="sesak_napas">Sesak Napas</string>
+    <string name="pilek">Pilek</string>
+    <string name="sakit_tenggorokan">Sakit Tenggorokan</string>
+    <string name="sakit_kepala">Sakit Kepala</string>
+    <string name="mual">Mual</string>
+    <string name="lainnya">Lainnya</string>
+    <string name="selanjutnya">Selanjutnya</string>
+    <string name="email">Email</string>
+    <string name="no_hp">No HP</string>
+    <string name="unggah">Unggah</string>
 </resources>

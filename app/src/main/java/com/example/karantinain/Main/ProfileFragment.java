@@ -28,6 +28,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 SharedPrefManager.setLoggedInStatus(getContext(), false, "");
                 SharedPrefManager.setAccount(getContext(), "", "");
+                SharedPrefManager.setProfile(getContext(), "", "", "", "", "", "");
                 startActivity(new Intent(getContext(), MenuLoginActivity.class));
                 getActivity().finish();
             }

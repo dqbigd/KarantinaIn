@@ -1,6 +1,7 @@
 package com.example.karantinain.Api;
 
 import com.example.karantinain.Login.LoginResponse;
+import com.example.karantinain.Login.ProfileResponse;
 import com.example.karantinain.Register.RegisterResponse;
 
 import retrofit2.Call;
@@ -31,11 +32,10 @@ public interface ApiInterface {
     Call<LoginResponse> signIn(@Field("username") String username,
                               @Field("password") String password);
 
+    //Profile
+    @GET("/user/profile")
+    Call<ProfileResponse> profile(@Header("Authorization") String token);
 
-    //LUG API Profile
-//    @GET("/profile")
-//    Call<Profile> profile(@Header("Authorization") String token);
-//
 //    //LUG API Schedule Today
 //    @GET("/schedule/today")
 //    Call<ScheduleResponse> scheduleToday(@Header("Authorization") String token);

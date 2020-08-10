@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main.MainActivity"
-            android:theme="@style/AppTheme.Colored"/>
+            android:theme="@style/AppTheme.Colored"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>

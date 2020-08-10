@@ -11,30 +11,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="208dp"
                 android:background="@drawable/bg_home_green"
                 android:orientation="vertical"
                 android:paddingBottom="32dp">
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingStart="16dp"
+                    android:paddingStart="20dp"
                     android:paddingTop="18dp"
-                    android:paddingEnd="16dp"
+                    android:paddingEnd="20dp"
                     android:paddingBottom="14dp">
 
                     <ImageView
                         android:id="@+id/imgLogo"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="35dp"
+                        android:layout_height="33dp"
                         android:layout_alignParentStart="true"
-                        android:background="@drawable/" />
+                        android:background="@drawable/logo_home" />
 
                     <ImageButton
                         android:id="@+id/imgBtnNotification"
@@ -52,7 +50,6 @@
                         android:background="@drawable/bg_red_circle"
                         android:orientation="horizontal"
                         android:visibility="visible"/>
-
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -65,7 +62,7 @@
                     android:paddingEnd="16dp">
 
                     <TextView
-                        android:id="@+id/tvHai"
+                        android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hai, "
@@ -74,19 +71,10 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/tvHai"
-                        android:text="@string/name"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
                         android:id="@+id/tvBagaimana"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvHai"
+                        android:layout_below="@+id/tvName"
                         android:layout_marginTop="4dp"
                         android:text="Bagaimana keadaanmu? Semoga sehat selalu ya."
                         android:textColor="@android:color/white"
@@ -95,29 +83,204 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center_vertical"
-                android:layout_marginTop="29dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:layout_marginTop="255dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp">
 
                 <TextView
+                    android:id="@+id/tvRekomendasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Menu"
+                    android:text="Rekomendasi Kegiatan"
                     android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"/>
-            </LinearLayout>
+                <TextView
+                    android:layout_below="@+id/tvRekomendasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tips - tips kegiatan bermanfaat yang dapat dilakukan ketika isolasi mandiri dirumah agar tidak bosan"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@+id/tvSelanjutnya"/>
+                <TextView
+                    android:id="@+id/tvSelanjutnya"
+                    android:layout_below="@+id/tvRekomendasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selanjutnya"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
         </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rlCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="178dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/lyCamera"
+                android:layout_width="match_parent"
+                android:layout_height="122dp"
+                android:gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/imgTapCamera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="25dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_tap_camera" />
+
+                    <RelativeLayout
+                        android:layout_toEndOf="@+id/imgTapCamera"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="11dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="4dp">
+                        <TextView
+                            android:id="@+id/tvSelfie"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Selfie wajah terkini"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Upload dan bagikan selfie wajah dan keadaan isolasi mandiri kamu kepada gugus tugas COVID-19"
+                            android:layout_below="@+id/tvSelfie"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp"/>
+                    </RelativeLayout>
+                    <Button
+                        android:id="@+id/btnUploadPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:text="@string/unggah"
+                        android:textAllCaps="false"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:textSize="10sp"
+                        android:textColor="@android:color/white"
+                        android:background="@drawable/bg_green_rounded"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak ada foto terkini"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toStartOf="@+id/btnUploadPhoto"
+                        android:textSize="10dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="4dp"
+                        android:textColor="@android:color/black"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="155dp">
-            
+            android:layout_marginTop="315dp">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/lyLocation"
+                android:layout_width="match_parent"
+                android:layout_height="122dp"
+                android:gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgTapLocation"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="25dp"
+                        android:src="@drawable/ic_tap_location" />
+
+                    <RelativeLayout
+                        android:layout_toEndOf="@+id/imgTapLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="11dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="4dp">
+                        <TextView
+                            android:id="@+id/tvKirim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kirim lokasi isolasi mandiri saat ini"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bagikan lokasi isolasi kamu saat ini kepada gugus tugas COVID-19"
+                            android:layout_below="@+id/tvKirim"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp"/>
+                    </RelativeLayout>
+                    <Button
+                        android:id="@+id/btnUploadLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:text="@string/unggah"
+                        android:textAllCaps="false"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:textSize="10sp"
+                        android:textColor="@android:color/white"
+                        android:background="@drawable/bg_green_rounded"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak ada lokasi terkini"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toStartOf="@+id/btnUploadLocation"
+                        android:textSize="10dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="4dp"
+                        android:textColor="@android:color/black"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </FrameLayout>
 </ScrollView>
