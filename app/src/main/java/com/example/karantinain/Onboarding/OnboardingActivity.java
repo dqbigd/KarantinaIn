@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.karantinain.Login.MenuLoginActivity;
-import com.example.karantinain.MainActivity;
+import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
 

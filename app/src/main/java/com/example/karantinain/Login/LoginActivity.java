@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
-import com.example.karantinain.MainActivity;
+import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.Register.RegisterActivity;
 import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;

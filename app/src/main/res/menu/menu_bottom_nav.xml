@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:title="Beranda"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/menu_insight"
+        android:title="Wawasan"
+        android:icon="@drawable/ic_insight"/>
+
+    <item
+        android:id="@+id/menu_chat"
+        android:title="Chat"
+        android:icon="@drawable/ic_insight"/>
+
+    <item
+        android:id="@+id/menu_profile"
+        android:title="Sehatku"
+        android:icon="@drawable/ic_account"/>
+</menu>
