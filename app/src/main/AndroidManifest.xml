@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.karantinain">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -25,6 +27,13 @@
         <activity android:name=".Main.MainActivity"
             android:theme="@style/AppTheme.Colored"
             android:configChanges="orientation|screenSize"/>
+
+        <!-- Foreground services in Q+ require type. -->
+        <service
+            android:name=".Main.Home.LocationUpdatesService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="location" />
     </application>
 
 </manifest>

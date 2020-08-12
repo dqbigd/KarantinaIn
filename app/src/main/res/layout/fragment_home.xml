@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.HomeFragment">
+    tools:context=".Main.Home.HomeFragment">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -186,7 +186,7 @@
                         android:layout_marginBottom="8dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:textColor="@android:color/white"
                         android:background="@drawable/bg_green_rounded"/>
                     <TextView
@@ -196,8 +196,8 @@
                         android:layout_alignParentBottom="true"
                         android:layout_toStartOf="@+id/btnUploadPhoto"
                         android:textSize="10dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginEnd="8dp"
                         android:textColor="@android:color/black"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -241,7 +241,7 @@
                             android:id="@+id/tvKirim"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Kirim lokasi isolasi mandiri saat ini"
+                            android:text="Aktifkan lokasi isolasi mandiri kamu saat ini"
                             android:textStyle="bold"
                             android:textColor="@android:color/black"
                             android:layout_marginBottom="8dp"
@@ -249,16 +249,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Bagikan lokasi isolasi kamu saat ini kepada gugus tugas COVID-19"
+                            android:text="Aktifkan lokasi isolasi kamu ssat ini, supaya gugus tugas COVID-19 dapat mengetahui lokasi kamu"
                             android:layout_below="@+id/tvKirim"
                             android:textColor="@android:color/black"
                             android:textSize="12sp"/>
                     </RelativeLayout>
                     <Button
-                        android:id="@+id/btnUploadLocation"
+                        android:id="@+id/btnActivateLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
-                        android:text="@string/unggah"
+                        android:text="@string/aktifkan"
                         android:textAllCaps="false"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
@@ -266,19 +266,40 @@
                         android:layout_marginBottom="8dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:textColor="@android:color/white"
                         android:background="@drawable/bg_green_rounded"/>
+                    <Button
+                        android:id="@+id/btnInactiveLocation"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:text="@string/nonaktifkan"
+                        android:textAllCaps="false"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorPrimary"
+                        android:background="@drawable/bg_white_border_green_rounded"/>
                     <TextView
+                        android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tidak ada lokasi terkini"
+                        android:text="@string/tidak_ada_lokasi_terkini"
                         android:layout_alignParentBottom="true"
-                        android:layout_toStartOf="@+id/btnUploadLocation"
+                        android:layout_toStartOf="@+id/btnActivateLocation"
+                        android:layout_toEndOf="@+id/imgTapLocation"
                         android:textSize="10dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginEnd="4dp"
-                        android:textColor="@android:color/black"/>
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:maxLines="1"
+                        android:textAlignment="textEnd"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </RelativeLayout>

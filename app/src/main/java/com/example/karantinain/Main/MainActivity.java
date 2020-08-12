@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.karantinain.Main.Home.HomeFragment;
 import com.example.karantinain.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

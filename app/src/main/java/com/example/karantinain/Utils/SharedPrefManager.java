@@ -7,8 +7,10 @@ import android.preference.PreferenceManager;
 public class SharedPrefManager {
     static final String KEY_ACCOUNT_USERNAME = "account_username";
     static final String KEY_ACCOUNT_PASSWORD = "account_password";
+
     static final String KEY_SIGNIN_STATUS = "signin_status";
     static final String KEY_TOKEN = "token";
+
     static final String KEY_PROFILE_USERNAME = "profile_username";
     static final String KEY_PROFILE_FULLNAME = "profile_fullname";
     static final String KEY_PROFILE_PHONE = "profile_phone";

@@ -50,4 +50,10 @@
     <string name="email">Email</string>
     <string name="no_hp">No HP</string>
     <string name="unggah">Unggah</string>
+    <string name="aktifkan">Aktifkan</string>
+    <string name="izin_diperlukan_untuk_kebutuhan_inti">Izin diperlukan untuk kebutuhan inti aplikasi</string>
+    <string name="nonaktifkan">Nonaktifkan</string>
+    <string name="lihat">Lihat</string>
+    <string name="lokasi_terbaru">Lokasi terbaru: %1$s</string>
+    <string name="tidak_ada_lokasi_terkini">Tidak ada lokasi terkini</string>
 </resources>
