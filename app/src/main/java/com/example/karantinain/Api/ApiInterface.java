@@ -1,15 +1,18 @@
 package com.example.karantinain.Api;
 
+import com.example.karantinain.Login.ForgotPassword.ForgotPasswordResponse;
 import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.Login.ProfileResponse;
 import com.example.karantinain.Register.RegisterResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Url;
 
 public interface ApiInterface {
@@ -31,6 +34,18 @@ public interface ApiInterface {
     @POST("auth/signin")
     Call<LoginResponse> signIn(@Field("username") String username,
                               @Field("password") String password);
+
+    //Send Email(Forgot Password)
+    @FormUrlEncoded
+    @PUT("/auth/forgot-password")
+    Call<ForgotPasswordResponse> sendEmail(@Field("email") String email);
+
+    //Password Change(Forgot Password)
+    @FormUrlEncoded
+    @PUT("/auth/forgot-password")
+    Call<ForgotPasswordResponse> passwordChange(@Field("email") String email,
+                                                @Field("token") String token,
+                                                @Field("password") String password);
 
     //Profile
     @GET("/user/profile")

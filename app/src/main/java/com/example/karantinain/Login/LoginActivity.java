@@ -104,6 +104,12 @@ public class LoginActivity extends AppCompatActivity {
     };
 
     private void sendData() {
+        final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+        dialog.setTitle("Mengirimkan data");
+        dialog.setMessage("Loading ...");
+        dialog.setCancelable(true);
+        dialog.show();
+
         final String sUsername = etUsername.getText().toString();
         final String sPassword = etPassword.getText().toString();
 
@@ -113,13 +119,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getMessage().equals("Ok.")){
+                        dialog.show();
+
                         SharedPrefManager.setAccount(getBaseContext(), sUsername, sPassword);
                         String token = response.body().getData();
 
                         SharedPrefManager.setLoggedInStatus(getBaseContext(),true, token);
                         loadData(token);
-//                        startActivity(new Intent(getBaseContext(), MainActivity.class));
-//                        finish();
                     }else if(response.body().getMessage().equals("Not found.")){
                         Toast.makeText(LoginActivity.this, response.body().getData(), Toast.LENGTH_SHORT).show();
                     }
@@ -130,18 +136,25 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Mohon daftar / cek koneksi anda dahulu :D", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Mohon daftar / cek koneksi anda dahulu", Toast.LENGTH_SHORT).show();
                 Log.d("TAG", "onFailure: "+t.getMessage());
             }
         });
     }
 
     private void loadData(String token) {
+        final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+        dialog.setTitle("Mengambil data");
+        dialog.setMessage("Loading ...");
+        dialog.setCancelable(true);
+        dialog.show();
+
         Call<ProfileResponse> call = InitRetrofit.getInstance().profile(token);
         call.enqueue(new Callback<ProfileResponse>() {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                 if (response.isSuccessful()){
+                    dialog.hide();
 
                     String username = response.body().getData().getUsername();
                     String fullname = response.body().getData().getFullname();
@@ -151,9 +164,9 @@ public class LoginActivity extends AppCompatActivity {
                     String indication = response.body().getData().getIndication();
 
                     Log.d("Success LoadData ", response.body().getData().getFullname());
+                    SharedPrefManager.setProfile(getApplicationContext(), username, fullname, phone, gender, age, indication);
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
-                    SharedPrefManager.setProfile(getApplicationContext(), username, fullname, phone, gender, age, indication);
                 }else {
                     Toast.makeText(LoginActivity.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                 }
