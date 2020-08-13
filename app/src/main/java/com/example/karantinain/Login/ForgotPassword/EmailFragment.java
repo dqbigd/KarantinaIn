@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -48,7 +49,10 @@ public class EmailFragment extends Fragment{
                 String email = etEmail.getText().toString();
                 Boolean validation = true;
 
-                if (!isValidEmail(email)) {
+                if(TextUtils.isEmpty(email)){
+                    etEmail.setError("Field tidak boleh kosong");
+                    validation = false;
+                }else if (!isValidEmail(email)) {
                     etEmail.setError("Email tidak valid");
                     validation = false;
                 }
@@ -66,7 +70,7 @@ public class EmailFragment extends Fragment{
         final ProgressDialog dialog = new ProgressDialog(getContext());
         dialog.setTitle("Mengirimkan data");
         dialog.setMessage("Loading ...");
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.show();
 
         Call<ForgotPasswordResponse> call = InitRetrofit.getInstance().sendEmail(email);
@@ -75,7 +79,7 @@ public class EmailFragment extends Fragment{
             public void onResponse(Call<ForgotPasswordResponse> call, Response<ForgotPasswordResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getMessage().equals("Ok.")){
-                        dialog.hide();
+                        dialog.dismiss();
                         nextFragment(email);
                     }
                 }else {

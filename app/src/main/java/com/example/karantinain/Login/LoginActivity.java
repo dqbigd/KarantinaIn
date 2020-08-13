@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getMessage().equals("Ok.")){
-                        dialog.show();
+                        dialog.dismiss();
 
                         SharedPrefManager.setAccount(getBaseContext(), sUsername, sPassword);
                         String token = response.body().getData();
@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                 if (response.isSuccessful()){
-                    dialog.hide();
+                    dialog.dismiss();
 
                     String username = response.body().getData().getUsername();
                     String fullname = response.body().getData().getFullname();

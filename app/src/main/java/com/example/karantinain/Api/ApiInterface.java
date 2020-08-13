@@ -42,7 +42,7 @@ public interface ApiInterface {
 
     //Password Change(Forgot Password)
     @FormUrlEncoded
-    @PUT("/auth/forgot-password")
+    @PUT("/auth/reset-password")
     Call<ForgotPasswordResponse> passwordChange(@Field("email") String email,
                                                 @Field("token") String token,
                                                 @Field("password") String password);

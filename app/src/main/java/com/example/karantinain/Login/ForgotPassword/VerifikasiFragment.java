@@ -5,11 +5,11 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.karantinain.R;
@@ -34,28 +34,43 @@ public class VerifikasiFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean validation = true;
                 String verificationCode = etVerificationCode.getText().toString();
-                String email = getArguments().getString(EXTRA_EMAIL);
 
-                PasswordFragment passwordFragment = new PasswordFragment();
+                if (TextUtils.isEmpty(verificationCode)){
+                    etVerificationCode.setError("Field tidak boleh kosong");
+                    validation = false;
+                }else if(verificationCode.length() != 6){
+                    etVerificationCode.setError("Field ini harus terisi penuh");
+                    validation = false;
+                }
 
-                Bundle bundle = new Bundle();
-                bundle.putString(PasswordFragment.EXTRA_EMAIL, email);
-                bundle.putString(PasswordFragment.EXTRA_VERIFICATION_CODE, verificationCode);
-
-                passwordFragment.setArguments(bundle);
-
-                FragmentManager fragmentManager = getFragmentManager();
-                if (fragmentManager != null) {
-                    fragmentManager
-                            .beginTransaction()
-                            .replace(R.id.flReset, passwordFragment, PasswordFragment.class.getSimpleName())
-                            .addToBackStack(null)
-                            .commit();
+                if(validation){
+                    nextFragment(verificationCode);
                 }
             }
         });
 
         return view;
+    }
+
+    private void nextFragment(String verificationCode) {
+        String email = getArguments().getString(EXTRA_EMAIL);
+        PasswordFragment passwordFragment = new PasswordFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(PasswordFragment.EXTRA_EMAIL, email);
+        bundle.putString(PasswordFragment.EXTRA_VERIFICATION_CODE, verificationCode);
+
+        passwordFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager != null) {
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.flReset, passwordFragment, PasswordFragment.class.getSimpleName())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }
