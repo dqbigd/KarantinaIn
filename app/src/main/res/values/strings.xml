@@ -56,4 +56,12 @@
     <string name="lihat">Lihat</string>
     <string name="lokasi_terbaru">Lokasi terbaru: %1$s</string>
     <string name="tidak_ada_lokasi_terkini">Tidak ada lokasi terkini</string>
+    <string name="reset_password">Reset Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password_baru">Password baru</string>
+    <string name="ketikkan_password">Ketikkan password</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="ketik_ulang_password">Ketik ulang password</string>
+    <string name="ubah_password">Ubah Password</string>
 </resources>

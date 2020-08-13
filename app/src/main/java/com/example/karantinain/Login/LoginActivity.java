@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
+import com.example.karantinain.Login.ForgotPassword.ResetPasswordActivity;
 import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.Register.RegisterActivity;
 import com.example.karantinain.R;
@@ -45,6 +46,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
                 finish();
+            }
+        });
+
+        findViewById(R.id.tvForgotPass).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
             }
         });
 

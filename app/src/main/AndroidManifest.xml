@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login.LoginActivity"></activity>
+        <activity android:name=".Login.ForgotPassword.ResetPasswordActivity"></activity>
+        <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Register.RegisterActivity" />
-        <activity android:name=".Login.MenuLoginActivity"/>
+        <activity android:name=".Login.MenuLoginActivity" />
         <activity android:name=".Onboarding.OnboardingActivity" />
         <activity android:name=".Onboarding.SplashScreenActivity">
             <intent-filter>
@@ -24,11 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main.MainActivity"
-            android:theme="@style/AppTheme.Colored"
-            android:configChanges="orientation|screenSize"/>
-
-        <!-- Foreground services in Q+ require type. -->
+        <activity
+            android:name=".Main.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.Colored" /> <!-- Foreground services in Q+ require type. -->
         <service
             android:name=".Main.Home.LocationUpdatesService"
             android:enabled="true"
