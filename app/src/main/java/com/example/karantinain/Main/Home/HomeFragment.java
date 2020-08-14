@@ -1,9 +1,11 @@
 package com.example.karantinain.Main.Home;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -87,8 +89,8 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
 
         myReceiver = new MyReceiver();
         if (LocationUtils.requestingLocationUpdates(getContext())) {
-            if (!checkPermissions()) {
-                requestPermissions();
+            if (!checkPermissionLocation()) {
+                requestPermissionLocation();
             }
         }
 
@@ -99,12 +101,16 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     public void onStart() {
         super.onStart();
 
+        if (!LocationUtils.lastLocationUpdates(getContext()).equals("")){
+            tvLocation.setText(LocationUtils.lastLocationUpdates(getContext()));
+        }
+
         PreferenceManager.getDefaultSharedPreferences(getContext()).registerOnSharedPreferenceChangeListener(this);
         btnActivateLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!checkPermissions()) {
-                    requestPermissions();
+                if (!checkPermissionLocation()) {
+                    requestPermissionLocation();
                 } else {
                     mService.requestLocationUpdates();
                 }
@@ -114,14 +120,35 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         btnInactiveLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvLocation.setText(R.string.tidak_ada_lokasi_terkini);
-                mService.removeLocationUpdates();
+                openDialogInactive();
             }
         });
 
         // Restore the state of the buttons when the activity (re)launches.
         setButtonsState(LocationUtils.requestingLocationUpdates(getContext()));
         getActivity().bindService(new Intent(getActivity(), LocationUpdatesService.class), mServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private void openDialogInactive() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Konfirmasi")
+                .setMessage("Apakah kamu yakin ingin menonaktifkan lokasi saat ini?")
+                .setNegativeButton("batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setPositiveButton("ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                LocationUtils.setLastLocationUpdates(getContext(), "");
+                tvLocation.setText(R.string.tidak_ada_lokasi_terkini);
+                mService.removeLocationUpdates();
+            }
+        });
+//        builder.create();
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     @Override
@@ -151,7 +178,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         super.onStop();
     }
 
-    private void requestPermissions() {
+    private void requestPermissionLocation() {
         View view = getActivity().getWindow().getDecorView().findViewById(android.R.id.content);
 
         boolean shouldProvideRationale =
@@ -194,7 +221,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         }
     }
 
-    private boolean checkPermissions() {
+    private boolean checkPermissionLocation() {
         return  PackageManager.PERMISSION_GRANTED == ActivityCompat.checkSelfPermission(getContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION);
     }
@@ -208,7 +235,8 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
                 try {
                     List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                     tvLocation.setText(addresses.get(0).getAddressLine(0));
-                    Toast.makeText(context, addresses.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
+                    LocationUtils.setLastLocationUpdates(getContext(), addresses.get(0).getAddressLine(0));
+                    Toast.makeText(context, "Berhasil diaktifkan", Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
                     Toast.makeText(context, "Alamat tidak diketahui", Toast.LENGTH_SHORT).show();
                 }

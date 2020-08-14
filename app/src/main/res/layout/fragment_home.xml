@@ -121,6 +121,7 @@
                     android:layout_alignParentEnd="true"
                     android:textSize="12sp"/>
             </RelativeLayout>
+
         </LinearLayout>
         <RelativeLayout
             android:id="@+id/rlCamera"

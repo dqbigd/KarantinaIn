@@ -152,6 +152,7 @@ public class LocationUpdatesService extends Service {
         if (!mChangingConfiguration && LocationUtils.requestingLocationUpdates(this)) {
             Log.i(TAG, "Starting foreground service");
 
+
             startForeground(NOTIFICATION_ID, getNotification());
         }
         return true; // Ensures onRebind() is called when a client re-binds.

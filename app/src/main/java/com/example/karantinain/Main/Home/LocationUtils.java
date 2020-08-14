@@ -19,6 +19,7 @@ class LocationUtils {
     Context context;
 
     static final String KEY_REQUESTING_LOCATION_UPDATES = "requesting_location_updates";
+    static final String KEY_LAST_LOCATION_UPDATES = "last_location_updates";
 
     /**
      * Returns true if requesting location updates, otherwise returns false.
@@ -29,6 +30,10 @@ class LocationUtils {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(KEY_REQUESTING_LOCATION_UPDATES, false);
     }
+    static String lastLocationUpdates(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(KEY_LAST_LOCATION_UPDATES, "");
+    }
 
     /**
      * Stores the location updates state in SharedPreferences.
@@ -38,6 +43,13 @@ class LocationUtils {
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putBoolean(KEY_REQUESTING_LOCATION_UPDATES, requestingLocationUpdates)
+                .apply();
+    }
+
+    static void setLastLocationUpdates(Context context, String location) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString(KEY_LAST_LOCATION_UPDATES, location)
                 .apply();
     }
 
