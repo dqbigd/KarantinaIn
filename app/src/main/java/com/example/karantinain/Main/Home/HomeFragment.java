@@ -16,12 +16,14 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +44,8 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Used in checking for runtime permissions.
-    private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
+    private static final int REQUEST_PERMISSIONS_REQUEST_CODE_LOCATION = 34;
+    private static final int REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA = 35;
 
     // The BroadcastReceiver used to listen from broadcasts from the service.
     private MyReceiver myReceiver;
@@ -53,8 +56,8 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     // Tracks the bound state of the service.
     private boolean mBound = false;
 
-    TextView tvName, tvLocation;
-    Button btnActivateLocation, btnInactiveLocation;
+    TextView tvName, tvLocation, tvSelanjutnya;
+    Button btnActivateLocation, btnInactiveLocation, btnUploadPhoto;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -82,10 +85,30 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
 
         tvName = view.findViewById(R.id.tvName);
         tvLocation = view.findViewById(R.id.tvLocation);
+        tvSelanjutnya = view.findViewById(R.id.tvSelanjutnya);
         btnActivateLocation = (Button) view.findViewById(R.id.btnActivateLocation);
         btnInactiveLocation = view.findViewById(R.id.btnInactiveLocation);
+        btnUploadPhoto = view.findViewById(R.id.btnUploadPhoto);
 
         tvName.setText("Hai, "+ SharedPrefManager.getFullNameProfile(getContext()));
+
+        btnUploadPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA)){
+                    requestPermissionCamera();
+                }else{
+                    openCamera();
+                }
+            }
+        });
+
+        tvSelanjutnya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), KegiatanActivity.class));
+            }
+        });
 
         myReceiver = new MyReceiver();
         if (LocationUtils.requestingLocationUpdates(getContext())) {
@@ -95,6 +118,19 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         }
 
         return view;
+    }
+
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+//        if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA){
+//
+//        }
     }
 
     @Override
@@ -180,7 +216,6 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
 
     private void requestPermissionLocation() {
         View view = getActivity().getWindow().getDecorView().findViewById(android.R.id.content);
-
         boolean shouldProvideRationale =
                 ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
                         Manifest.permission.ACCESS_FINE_LOCATION);
@@ -199,7 +234,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
                             // Request permission
                             ActivityCompat.requestPermissions(getActivity(),
                                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                    REQUEST_PERMISSIONS_REQUEST_CODE);
+                                    REQUEST_PERMISSIONS_REQUEST_CODE_LOCATION);
                         }
                     })
                     .show();
@@ -210,7 +245,42 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
             // previously and checked "Never ask again".
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    REQUEST_PERMISSIONS_REQUEST_CODE);
+                    REQUEST_PERMISSIONS_REQUEST_CODE_LOCATION);
+        }
+    }
+
+    private void requestPermissionCamera() {
+        View view = getActivity().getWindow().getDecorView().findViewById(android.R.id.content);
+        boolean shouldProvideRationale =
+                ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                        Manifest.permission.CAMERA);
+
+        // Provide an additional rationale to the user. This would happen if the user denied the
+        // request previously, but didn't check the "Don't ask again" checkbox.
+        if (shouldProvideRationale) {
+            Log.i(TAG, "Displaying permission rationale to provide additional context.");
+            Snackbar.make(
+                    view,
+                    R.string.izin_diperlukan_untuk_kebutuhan_inti,
+                    Snackbar.LENGTH_INDEFINITE)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // Request permission
+                            ActivityCompat.requestPermissions(getActivity(),
+                                    new String[]{Manifest.permission.CAMERA},
+                                    REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA);
+                        }
+                    })
+                    .show();
+        } else {
+            Log.i(TAG, "Requesting permission");
+            // Request permission. It's possible this can be auto answered if device policy
+            // sets the permission in a given state or the user denied the permission
+            // previously and checked "Never ask again".
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.CAMERA},
+                    REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA);
         }
     }
 

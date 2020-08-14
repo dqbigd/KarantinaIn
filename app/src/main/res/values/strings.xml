@@ -64,4 +64,7 @@
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="ketik_ulang_password">Ketik ulang password</string>
     <string name="ubah_password">Ubah Password</string>
+    <string name="nama_sumber">Nama sumber</string>
+    <string name="rekomendasi_kegiatan">Rekomendasi Kegiatan</string>
+    <string name="cari_kegiatan">Cari Kegiatan</string>
 </resources>

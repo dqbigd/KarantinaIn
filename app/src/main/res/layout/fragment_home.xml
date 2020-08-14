@@ -89,6 +89,7 @@
                 android:orientation="vertical"
                 android:gravity="center_vertical"
                 android:layout_marginTop="255dp"
+                android:layout_marginBottom="16dp"
                 android:paddingStart="24dp"
                 android:paddingEnd="24dp">
 
@@ -119,8 +120,57 @@
                     android:textColor="@color/colorPrimary"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    android:clickable="true"/>
             </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/pbKegiatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvKegiatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginTop="33dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tvContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Konten Edukasi Isolasi Mandiri"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_below="@+id/tvContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edukasi isolasi mandiri sangat diperlukan bagi pasien Orang Dalam Pemantauan(ODP)"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="16dp"/>
+            </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/pbContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
         <RelativeLayout

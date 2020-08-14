@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login.ForgotPassword.ResetPasswordActivity"></activity>
+        <activity android:name=".Main.Home.KegiatanActivity"></activity>
+        <activity android:name=".Login.ForgotPassword.ResetPasswordActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Register.RegisterActivity" />
         <activity android:name=".Login.MenuLoginActivity" />
