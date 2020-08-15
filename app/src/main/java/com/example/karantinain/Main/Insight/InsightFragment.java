@@ -1,4 +1,4 @@
-package com.example.karantinain.Main;
+package com.example.karantinain.Main.Insight;
 
 import android.os.Bundle;
 

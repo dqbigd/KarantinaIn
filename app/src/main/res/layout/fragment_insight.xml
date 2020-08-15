@@ -1,14 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.InsightFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Main.Insight.InsightFragment"
+    android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="INSIGHT" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:paddingStart="16dp"
+            android:paddingTop="17dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="17dp"
+            android:background="@android:color/white">
 
-</FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/wawasan"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+
+            <TextView
+                android:id="@+id/tvVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Video Edukasi Imunitas Tubuh"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_below="@+id/tvVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ketahui informasi tentang immunitas tubuh melalui video dibawah ini"
+                android:textColor="@android:color/black"
+                android:textSize="10sp"
+                android:layout_marginEnd="16dp"
+                android:layout_toStartOf="@+id/tvSelanjutnya"/>
+            <TextView
+                android:id="@+id/tvSelanjutnya"
+                android:layout_below="@+id/tvVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selanjutnya"
+                android:textColor="@color/colorPrimary"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:textSize="12sp"
+                android:clickable="true"/>
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:orientation="vertical"
+                android:background="#FFEABE">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Penting!"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Orang Dalam Pemantauan sering mengalami daya tahan tubuh lemah dan kondisi tersebut dapat diketahui dari berbagai tanda fisik, silahkan klik tautan berikut untuk mengenalinya."
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp"
+                    android:layout_marginTop="8dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvPahami"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pahami 10 tanda daya tahan tubuh sedang melemah"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="13dp"/>
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_right"
+                        android:background="@android:color/transparent"
+                        android:layout_marginEnd="2dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+
+            <TextView
+                android:id="@+id/tvRekomendasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rekomendasi Makanan Bergizi"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_below="@+id/tvRekomendasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anjuran makanan bergizi yang dipilih khusus untuk meningkatkan sistem imun tubuh anda"
+                android:textColor="@android:color/black"
+                android:textSize="10sp"
+                android:layout_marginEnd="16dp"/>
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFoodCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFoodRecommendation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+            <TextView
+                android:id="@+id/tvOlahraga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rekomendasi Olahraga Ringan"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_below="@+id/tvOlahraga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anjuran Olahraga ringan yang efektif untuk meningkatkan sistem imun tubuh anda"
+                android:textColor="@android:color/black"
+                android:textSize="10sp"
+                android:layout_marginEnd="16dp"/>
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>

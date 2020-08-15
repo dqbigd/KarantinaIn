@@ -37,7 +37,6 @@
                 android:textSize="16sp"
                 android:gravity="center"/>
         </LinearLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.appcompat.widget.SearchView
         android:id="@+id/svKegiatan"
