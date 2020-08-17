@@ -4,12 +4,170 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main.ProfileFragment"
-    android:gravity="center">
-
-    <Button
-        android:id="@+id/btnLogout"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOGOUT"/>
+        android:elevation="2dp"
+        android:paddingStart="16dp"
+        android:paddingTop="17dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="17dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/sehatku"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="12dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgAccount"
+                    android:layout_width="82dp"
+                    android:layout_height="82dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/pic_profile_male"
+                    android:padding="8dp"/>
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:layout_toEndOf="@+id/imgAccount"
+                    android:layout_marginStart="4dp"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="8dp"/>
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"
+                    android:layout_toEndOf="@+id/imgAccount"
+                    android:layout_marginStart="4dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorGrey"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/tvName"/>
+                <TextView
+                    android:id="@+id/tvIndication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/indication"
+                    android:layout_toEndOf="@+id/imgAccount"
+                    android:layout_marginStart="4dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorGrey"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/tvAddress"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp">
+                <TextView
+                    android:id="@+id/tvNutrition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kebutuhan Nutrisi Hari Ini"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_below="@+id/tvNutrition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nutrisi makanan kamu yang sudah terpenuhi sesuai anjuran gugus tugas COVID-19"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@+id/tvFoodHistory"/>
+
+                <TextView
+                    android:id="@+id/tvFoodHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvNutrition"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:text="@string/riwayat_makanan"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
+                <TextView
+                    android:id="@+id/tvSport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Olahraga Ringan Hari Ini"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_below="@+id/tvSport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Olahraga ringan yang sudah kamu lakukan sesuai anjuran gugus tugas COVID-19"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@+id/tvSportHistory"/>
+                <TextView
+                    android:id="@+id/tvSportHistory"
+                    android:layout_below="@+id/tvSport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/riwayat_olahraga"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="12sp"
+                    android:clickable="true"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

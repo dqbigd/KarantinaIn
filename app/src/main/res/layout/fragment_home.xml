@@ -111,9 +111,9 @@
                     android:textColor="@android:color/black"
                     android:textSize="10sp"
                     android:layout_marginEnd="16dp"
-                    android:layout_toStartOf="@+id/tvSelanjutnya"/>
+                    android:layout_toStartOf="@+id/tvFoodHistory"/>
                 <TextView
-                    android:id="@+id/tvSelanjutnya"
+                    android:id="@+id/tvFoodHistory"
                     android:layout_below="@+id/tvRekomendasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -264,7 +264,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/lyLocation"
                 android:layout_width="match_parent"
-                android:layout_height="122dp"
+                android:layout_height="132dp"
                 android:gravity="center"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
@@ -322,7 +322,8 @@
                         android:paddingBottom="4dp"
                         android:textSize="12sp"
                         android:textColor="@android:color/white"
-                        android:background="@drawable/bg_green_rounded"/>
+                        android:background="@drawable/bg_green_rounded"
+                        android:layout_below="@id/imgTapLocation"/>
                     <Button
                         android:id="@+id/btnInactiveLocation"
                         android:visibility="gone"

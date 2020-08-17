@@ -37,6 +37,7 @@
         <item>Mual</item>
         <item>Lainnya</item>
     </string-array>
+
     <string name="name">Name</string>
     <string name="batuk">Batuk</string>
     <string name="demam">Demam</string>
@@ -68,4 +69,11 @@
     <string name="rekomendasi_kegiatan">Rekomendasi Kegiatan</string>
     <string name="cari_kegiatan">Cari Kegiatan</string>
     <string name="wawasan">Wawasan</string>
+    <string name="chat">Chat</string>
+    <string name="sehatku">Sehatku</string>
+    <string name="beranda">Beranda</string>
+    <string name="address">Address</string>
+    <string name="indication">Indication</string>
+    <string name="riwayat_makanan">Riwayat Makanan</string>
+    <string name="riwayat_olahraga">Riwayat Olahraga</string>
 </resources>

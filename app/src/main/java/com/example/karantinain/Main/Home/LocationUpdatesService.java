@@ -22,8 +22,10 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.example.karantinain.Login.LoginActivity;
 import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.R;
+import com.example.karantinain.Utils.SharedPrefManager;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -212,6 +214,11 @@ public class LocationUpdatesService extends Service {
         // The PendingIntent to launch activity.
         PendingIntent activityPendingIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), 0);
+        if (!SharedPrefManager.getKeySignInStatus(getApplicationContext())){
+            activityPendingIntent = PendingIntent.getActivity(this, 0,
+                    new Intent(this, LoginActivity.class), 0);
+        }
+
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .addAction(R.drawable.ic_launch, getString(R.string.lihat),

@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
 
         tvName = view.findViewById(R.id.tvName);
         tvLocation = view.findViewById(R.id.tvLocation);
-        tvSelanjutnya = view.findViewById(R.id.tvSelanjutnya);
+        tvSelanjutnya = view.findViewById(R.id.tvFoodHistory);
         btnActivateLocation = (Button) view.findViewById(R.id.btnActivateLocation);
         btnInactiveLocation = view.findViewById(R.id.btnInactiveLocation);
         btnUploadPhoto = view.findViewById(R.id.btnUploadPhoto);

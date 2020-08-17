@@ -6,4 +6,5 @@
     <color name="colorOnBoardInactive">#C4C4C4</color>
     <color name="colorRegisterInActive">#A6B5C5</color>
     <color name="colorLine">#E8EFF5</color>
+    <color name="colorGrey">#979797</color>
 </resources>
