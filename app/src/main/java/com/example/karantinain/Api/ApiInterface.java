@@ -3,7 +3,10 @@ package com.example.karantinain.Api;
 import com.example.karantinain.Login.ForgotPassword.ForgotPasswordResponse;
 import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.Login.ProfileResponse;
+import com.example.karantinain.Main.Home.RecommendActivityResponse;
 import com.example.karantinain.Register.RegisterResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -11,6 +14,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Url;
@@ -50,6 +54,10 @@ public interface ApiInterface {
     //Profile
     @GET("/user/profile")
     Call<ProfileResponse> profile(@Header("Authorization") String token);
+
+    //Profile
+    @GET("/activity")
+    Call<RecommendActivityResponse> recommendActivity(@Header("Authorization") String token);
 
 //    //LUG API Schedule Today
 //    @GET("/schedule/today")

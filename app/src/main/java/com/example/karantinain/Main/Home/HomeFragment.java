@@ -20,6 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -29,16 +31,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.karantinain.Api.InitRetrofit;
 import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener{
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -58,6 +67,11 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
 
     TextView tvName, tvLocation, tvSelanjutnya;
     Button btnActivateLocation, btnInactiveLocation, btnUploadPhoto;
+    RecyclerView rvKegiatan, rvContent;
+    ProgressBar pbKegiatan;
+
+    private ArrayList<RecommendActivityData> recommendActivityDataArrayList = new ArrayList<>();
+    private RecommendActivityAdapter recommendActivityAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -89,6 +103,10 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         btnActivateLocation = (Button) view.findViewById(R.id.btnActivateLocation);
         btnInactiveLocation = view.findViewById(R.id.btnInactiveLocation);
         btnUploadPhoto = view.findViewById(R.id.btnUploadPhoto);
+        rvKegiatan = view.findViewById(R.id.rvKegiatan);
+        pbKegiatan = view.findViewById(R.id.pbKegiatan);
+
+        setupRecommendActivity();
 
         tvName.setText("Hai, "+ SharedPrefManager.getFullNameProfile(getContext()));
 
@@ -118,6 +136,39 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         }
 
         return view;
+    }
+
+    private void setupRecommendActivity() {
+        rvKegiatan.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvKegiatan.setAdapter(recommendActivityAdapter);
+
+        pbKegiatan.setVisibility(View.VISIBLE);
+        String token = SharedPrefManager.getKeyToken(getContext());
+
+        Call<RecommendActivityResponse> call = InitRetrofit.getInstance().recommendActivity(token);
+        call.enqueue(new Callback<RecommendActivityResponse>() {
+            @Override
+            public void onResponse(Call<RecommendActivityResponse> call, Response<RecommendActivityResponse> response) {
+                if (response.isSuccessful()) {
+                    pbKegiatan.setVisibility(View.GONE);
+                    if (response.body() != null && response.body().getMessage().equals("Ok.")) {
+                        if (response.body().getData().toString().equals("[]")) {
+                            Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
+                        } else {
+                            recommendActivityDataArrayList = new ArrayList<>(response.body().getData());
+                            recommendActivityAdapter = new RecommendActivityAdapter(recommendActivityDataArrayList);
+                            rvKegiatan.setAdapter(recommendActivityAdapter);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecommendActivityResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "Mohon cek jaringan internet anda", Toast.LENGTH_SHORT).show();
+                Log.d("Response Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
     }
 
     private void openCamera() {
