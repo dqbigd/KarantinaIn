@@ -13,8 +13,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Main.Home.KegiatanActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Main.Home.DetailKegiatanActivity"></activity>
+        <activity android:name=".Main.Home.KegiatanActivity" />
         <activity android:name=".Login.ForgotPassword.ResetPasswordActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Register.RegisterActivity" />

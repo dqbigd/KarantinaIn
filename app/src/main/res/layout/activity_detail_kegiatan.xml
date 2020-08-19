@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.Home.KegiatanActivity"
-    android:orientation="vertical"
-    android:background="@android:color/white">
+    tools:context=".Main.Home.DetailKegiatanActivity"
+    android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +28,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/ic_back"/>
             <TextView
+                android:id="@+id/tvTitleBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/rekomendasi_kegiatan"
@@ -38,28 +38,14 @@
                 android:gravity="center"/>
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/svKegiatan"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        app:queryHint="@string/cari_kegiatan"
-        android:hint="@string/cari_kegiatan"
-        android:textSize="14sp"
-        android:background="@drawable/input_selector_bg_kegiatan"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:iconifiedByDefault="false"
-        android:focusable="true"
-        app:searchIcon="@drawable/ic_search"/>
     <ProgressBar
         android:id="@+id/pbKegiatan"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvKegiatan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"/>
+    <WebView
+        android:id="@+id/wvDetailKegiatan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

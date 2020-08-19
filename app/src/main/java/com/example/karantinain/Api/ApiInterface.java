@@ -55,7 +55,7 @@ public interface ApiInterface {
     @GET("/user/profile")
     Call<ProfileResponse> profile(@Header("Authorization") String token);
 
-    //Profile
+    //Recommend Activity (Home)
     @GET("/activity")
     Call<RecommendActivityResponse> recommendActivity(@Header("Authorization") String token);
 

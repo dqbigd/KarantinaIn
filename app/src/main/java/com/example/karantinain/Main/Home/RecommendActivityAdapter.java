@@ -1,6 +1,7 @@
 package com.example.karantinain.Main.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.karantinain.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class RecommendActivityAdapter extends RecyclerView.Adapter<RecommendActivityAdapter.RecommendActivityHolder>{
     private ArrayList<RecommendActivityData> listRecommendActivity;
     private Context context;
+    int limit;
+    boolean bLimit;
 
-    public RecommendActivityAdapter(ArrayList<RecommendActivityData> list){
+    public RecommendActivityAdapter(ArrayList<RecommendActivityData> list, boolean bLimit , Integer limit){
         this.listRecommendActivity = list;
+        this.limit = limit;
+        this.bLimit = bLimit;
     }
 
     @NonNull
@@ -37,13 +43,22 @@ public class RecommendActivityAdapter extends RecyclerView.Adapter<RecommendActi
         RecommendActivityData recommendActivityData = listRecommendActivity.get(position);
 
         holder.tvTitle.setText(recommendActivityData.getTitle());
+//        Picasso.get().load("https://equal.lug-surabaya.com/images/jobs/1583470828.png").into(holder.imgBanner);
         Glide.with(holder.itemView.getContext())
-                .load(recommendActivityData.getImage())
+                .load("http://"+recommendActivityData.getImage())
                 .into(holder.imgBanner);
         holder.imgBtnOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String sLink = recommendActivityData.getLink();
+                String sTitleBar = recommendActivityData.getTitle();
 
+                Intent intentDetail = new Intent(context, DetailKegiatanActivity.class);
+
+                intentDetail.putExtra("EXTRA_DETAIL_KEGIATAN_TITLE", sTitleBar);
+                intentDetail.putExtra("EXTRA_DETAIL_KEGIATAN_LINK", sLink);
+
+                context.startActivity(intentDetail);
             }
         });
 
@@ -51,15 +66,17 @@ public class RecommendActivityAdapter extends RecyclerView.Adapter<RecommendActi
 
     @Override
     public int getItemCount() {
-//        int limit = 3;
-//
-//        if (listRecommendActivity.size() > limit){
-//            return limit;
-//        }else {
-//            return listRecommendActivity.size();
-//        }
 
-        return listRecommendActivity.size();
+        if (bLimit){
+            if (listRecommendActivity.size() > limit){
+                return limit;
+            }else {
+                return listRecommendActivity.size();
+            }
+        }else{
+            return listRecommendActivity.size();
+        }
+
     }
 
     public class RecommendActivityHolder extends RecyclerView.ViewHolder {

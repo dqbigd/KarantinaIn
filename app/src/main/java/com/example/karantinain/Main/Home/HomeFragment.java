@@ -36,6 +36,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
+import com.example.karantinain.Login.LoginActivity;
+import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
@@ -155,10 +157,13 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
                         if (response.body().getData().toString().equals("[]")) {
                             Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
                         } else {
+                            rvKegiatan.setVisibility(View.VISIBLE);
                             recommendActivityDataArrayList = new ArrayList<>(response.body().getData());
-                            recommendActivityAdapter = new RecommendActivityAdapter(recommendActivityDataArrayList);
+                            recommendActivityAdapter = new RecommendActivityAdapter(recommendActivityDataArrayList,true, 3);
                             rvKegiatan.setAdapter(recommendActivityAdapter);
                         }
+                    }else if(response.body().getCode().equals("ERR_ACCESS")){
+                        reLogin();
                     }
                 }
             }
@@ -167,6 +172,37 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
             public void onFailure(Call<RecommendActivityResponse> call, Throwable t) {
                 Toast.makeText(getActivity(), "Mohon cek jaringan internet anda", Toast.LENGTH_SHORT).show();
                 Log.d("Response Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
+
+    private void reLogin() {
+        pbKegiatan.setVisibility(View.VISIBLE);
+
+        String sUsername = SharedPrefManager.getKeyAccountUser(getContext());
+        String sPassword = SharedPrefManager.getKeyAccountPassword(getContext());
+
+        Call<LoginResponse> call = InitRetrofit.getInstance().signIn(sUsername, sPassword);
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getMessage().equals("Ok.")){
+                        pbKegiatan.setVisibility(View.GONE);
+
+                        String token = response.body().getData();
+
+                        SharedPrefManager.setLoggedInStatus(getContext(),true, token);
+                    }
+                }else {
+                    Toast.makeText(getContext(), "Tidak dapat melakukan re-login", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Mohon cek koneksi internet anda ", Toast.LENGTH_SHORT).show();
+                Log.d("TAG", "onFailure: "+t.getMessage());
             }
         });
     }
