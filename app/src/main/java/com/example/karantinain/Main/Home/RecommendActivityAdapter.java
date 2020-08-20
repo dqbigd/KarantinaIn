@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.karantinain.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -43,9 +42,8 @@ public class RecommendActivityAdapter extends RecyclerView.Adapter<RecommendActi
         RecommendActivityData recommendActivityData = listRecommendActivity.get(position);
 
         holder.tvTitle.setText(recommendActivityData.getTitle());
-//        Picasso.get().load("https://equal.lug-surabaya.com/images/jobs/1583470828.png").into(holder.imgBanner);
         Glide.with(holder.itemView.getContext())
-                .load("http://"+recommendActivityData.getImage())
+                .load(recommendActivityData.getImage())
                 .into(holder.imgBanner);
         holder.imgBtnOpen.setOnClickListener(new View.OnClickListener() {
             @Override

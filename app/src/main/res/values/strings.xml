@@ -76,4 +76,9 @@
     <string name="indication">Indication</string>
     <string name="riwayat_makanan">Riwayat Makanan</string>
     <string name="riwayat_olahraga">Riwayat Olahraga</string>
+    <string name="pilih_makanan">Pilih Makanan</string>
+    <string name="pilih_olahraga">Pilih Olahraga</string>
+    <string name="keluar">Keluar</string>
+    <string name="edit_akun">Edit Akun</string>
+    <string name="versi_aplikasi">Versi Aplikasi</string>
 </resources>
