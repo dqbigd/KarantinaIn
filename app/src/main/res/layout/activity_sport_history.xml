@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.Home.KegiatanActivity"
+    tools:context=".Main.Profile.SportHistoryActivity"
     android:orientation="vertical"
     android:background="@android:color/white">
     <com.google.android.material.appbar.AppBarLayout
@@ -29,49 +29,34 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/ic_back"/>
             <TextView
+                android:id="@+id/tvTitleBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/rekomendasi_kegiatan"
+                android:text="@string/riwayat_olahraga"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:gravity="center"/>
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/lyNoHistory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/etKegiatan"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            app:queryHint="@string/cari_kegiatan"
-            android:hint="@string/cari_kegiatan"
-            android:textSize="14sp"
-            android:background="@drawable/input_selector_bg_kegiatan"
-            android:paddingStart="58dp"
-            android:paddingEnd="12dp"
-            android:iconifiedByDefault="false"
-            android:focusable="true"
-            app:searchIcon="@drawable/ic_search"/>
-        <ImageButton
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="102dp"
+            android:layout_height="62dp"
+            android:src="@drawable/pic_profile_sport"
+            android:layout_marginBottom="24dp"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_search"
-            android:background="@android:color/transparent"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="26dp"/>
-    </RelativeLayout>
-
-    <ProgressBar
-        android:id="@+id/pbKegiatan"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvKegiatan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
+            android:text="Belum ada riwayat olahraga yang kamu masukkan di Olahraga ringan Hari ini"
+            android:textAlignment="center"
+            android:layout_marginStart="87dp"
+            android:layout_marginEnd="87dp"/>
+    </LinearLayout>
 </LinearLayout>

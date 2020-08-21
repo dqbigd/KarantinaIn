@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.Home.DetailKegiatanActivity"></activity>
+        <activity android:name=".Main.Profile.SportHistoryActivity"></activity>
+        <activity android:name=".Main.Profile.FoodHistoryActivity" />
+        <activity android:name=".Main.Profile.EditAccountActivity" />
+        <activity android:name=".Main.Home.DetailKegiatanActivity" />
         <activity android:name=".Main.Home.KegiatanActivity" />
         <activity android:name=".Login.ForgotPassword.ResetPasswordActivity" />
         <activity android:name=".Login.LoginActivity" />

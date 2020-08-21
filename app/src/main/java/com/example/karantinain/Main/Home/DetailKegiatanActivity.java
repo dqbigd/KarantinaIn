@@ -52,6 +52,7 @@ public class DetailKegiatanActivity extends AppCompatActivity {
             }
         });
         wvDetailKegiatan.setWebViewClient(new WebViewClient());
+//        wvDetailKegiatan.getSettings().setJavaScriptEnabled(true);
         wvDetailKegiatan.loadUrl(sLink);
     }
 }

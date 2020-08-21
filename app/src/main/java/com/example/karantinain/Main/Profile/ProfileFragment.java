@@ -1,4 +1,4 @@
-package com.example.karantinain.Main;
+package com.example.karantinain.Main.Profile;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.karantinain.Main.Home.HomeFragment;
 import com.example.karantinain.Main.Insight.InsightFragment;
+import com.example.karantinain.Main.Profile.ProfileFragment;
 import com.example.karantinain.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

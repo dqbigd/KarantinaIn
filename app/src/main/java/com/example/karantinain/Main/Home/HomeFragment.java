@@ -70,10 +70,12 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     TextView tvName, tvLocation, tvSelanjutnya;
     Button btnActivateLocation, btnInactiveLocation, btnUploadPhoto;
     RecyclerView rvKegiatan, rvContent;
-    ProgressBar pbKegiatan;
+    ProgressBar pbKegiatan, pbContent;
 
     private ArrayList<RecommendActivityData> recommendActivityDataArrayList = new ArrayList<>();
     private RecommendActivityAdapter recommendActivityAdapter;
+    private ArrayList<ContentEducationData> contentEducationDataArrayList = new ArrayList<>();
+    private ContentEducationAdapter contentEducationAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -107,8 +109,11 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         btnUploadPhoto = view.findViewById(R.id.btnUploadPhoto);
         rvKegiatan = view.findViewById(R.id.rvKegiatan);
         pbKegiatan = view.findViewById(R.id.pbKegiatan);
+        rvContent = view.findViewById(R.id.rvContent);
+        pbContent = view.findViewById(R.id.pbContent);
 
         setupRecommendActivity();
+        setupContentEducation();
 
         tvName.setText("Hai, "+ SharedPrefManager.getFullNameProfile(getContext()));
 
@@ -140,6 +145,39 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         return view;
     }
 
+    private void setupContentEducation() {
+        rvContent.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvContent.setAdapter(contentEducationAdapter);
+
+        pbContent.setVisibility(View.VISIBLE);
+        String token = SharedPrefManager.getKeyToken(getContext());
+
+        Call<ContentEducationResponse> call = InitRetrofit.getInstance().contentEducation(token);
+        call.enqueue(new Callback<ContentEducationResponse>() {
+            @Override
+            public void onResponse(Call<ContentEducationResponse> call, Response<ContentEducationResponse> response) {
+                if (response.isSuccessful()) {
+                    pbContent.setVisibility(View.GONE);
+                    if (response.body() != null && response.body().getMessage().equals("Ok.")) {
+                        if (response.body().getData().toString().equals("[]")) {
+                            Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
+                        } else {
+                            contentEducationDataArrayList = new ArrayList<>(response.body().getData());
+                            contentEducationAdapter = new ContentEducationAdapter(contentEducationDataArrayList);
+                            rvContent.setAdapter(contentEducationAdapter);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContentEducationResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "Mohon cek jaringan internet anda", Toast.LENGTH_SHORT).show();
+                Log.d("Response Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
+
     private void setupRecommendActivity() {
         rvKegiatan.setLayoutManager(new LinearLayoutManager(getContext()));
         rvKegiatan.setAdapter(recommendActivityAdapter);
@@ -162,8 +200,6 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
                             recommendActivityAdapter = new RecommendActivityAdapter(recommendActivityDataArrayList,true, 3);
                             rvKegiatan.setAdapter(recommendActivityAdapter);
                         }
-                    }else if(response.body().getCode().equals("ERR_ACCESS")){
-                        reLogin();
                     }
                 }
             }

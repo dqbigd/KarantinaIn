@@ -23,7 +23,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class KegiatanActivity extends AppCompatActivity {
-    SearchView svKegiatan;
     RecyclerView rvKegiatan;
     ProgressBar pbKegiatan;
 
@@ -36,7 +35,6 @@ public class KegiatanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_kegiatan);
 
         rvKegiatan = findViewById(R.id.rvKegiatan);
-        svKegiatan = findViewById(R.id.svKegiatan);
         pbKegiatan = findViewById(R.id.pbKegiatan);
 
         findViewById(R.id.imgBtnBack).setOnClickListener(new View.OnClickListener() {
