@@ -39,9 +39,15 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vpRegister"
+    <FrameLayout
+        android:id="@+id/flRegister"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/vpRegister"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
 </LinearLayout>

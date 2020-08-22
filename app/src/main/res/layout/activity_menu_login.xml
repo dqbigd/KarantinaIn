@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:text="Aplikasi untuk memastikan pasien ODP tetap berada dirumah, memantau perkembangan kesehatan tubuh pasien dan menyajikan informasi yang dapat membantu meningkatkan immunitas tubuh pasien ODP"
         android:layout_above="@+id/lyButton"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="100dp"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textColor="@android:color/black"/>

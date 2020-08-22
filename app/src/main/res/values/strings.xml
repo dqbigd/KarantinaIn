@@ -82,4 +82,6 @@
     <string name="edit_akun">Edit Akun</string>
     <string name="versi_aplikasi">Versi Aplikasi</string>
     <string name="simpan">Simpan</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="penjelasan_permission_dibutuhkan">Izin ditolak, Izin digunakan untuk kebutuhan inti aplikasi</string>
 </resources>
