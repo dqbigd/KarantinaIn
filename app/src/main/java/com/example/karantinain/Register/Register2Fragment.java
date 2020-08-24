@@ -1,11 +1,15 @@
 package com.example.karantinain.Register;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.Settings;
@@ -21,13 +25,13 @@ import android.widget.Spinner;
 import com.example.karantinain.BuildConfig;
 import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.R;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Register2Fragment extends Fragment {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+    private final static int PLACE_PICKER_REQUEST = 32;
 
-    // Used in checking for runtime permissions.
-    private static final int REQUEST_PERMISSIONS_REQUEST_CODE_LOCATION = 34;
     public static String EXTRA_NAME = "extra_name";
     public static String EXTRA_EMAIL = "extra_email";
     public static String EXTRA_USERNAME = "extra_username";
@@ -36,9 +40,12 @@ public class Register2Fragment extends Fragment {
     public static String EXTRA_LATITUDE = "extra_latitude";
     public static String EXTRA_LONGITUDE = "extra_longitude";
 
+    WifiManager wifiManager;
+
     CheckBox cbBatuk, cbDemam, cbSesakNapas, cbPilek, cbSakitTenggorokan, cbSakitKepala, cbMual, cbLainnya;
     Spinner spGender, spAge;
-    String name, email, username, password, phone, gender, age, indication, latitude, longitude;
+    String name, email, username, password, phone, gender, age, indication, sLatitude, sLongitude;
+    Double latitude, longitude;
 
     public Register2Fragment() {
         // Required empty public constructor
@@ -58,6 +65,7 @@ public class Register2Fragment extends Fragment {
         cbLainnya = view.findViewById(R.id.cbLainnya);
         spGender = view.findViewById(R.id.spGender);
         spAge = view.findViewById(R.id.spAge);
+        wifiManager= (WifiManager) this.getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         view.findViewById(R.id.lyLocation).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,9 +90,11 @@ public class Register2Fragment extends Fragment {
                     indication = "Tidak ada";
                 }
 
-                Log.d("apapun", name+" "+email+" "+username+" "+password+" "+phone+" "+gender+" "+age+" "+indication);
+                latitude = Double.parseDouble(RegisterUtils.getKeyRegisterLatitude(getContext()));
+                longitude =  Double.parseDouble(RegisterUtils.getKeyRegisterLongitude(getContext()));
 
-
+                Log.d("apapun", name+" "+email+" "+username+" "+password+" "+phone+" "+gender+" "+age+" "+indication+"\n"+latitude+" "+longitude);
+//                RegisterUtils.setRegisterLocation(getContext(), 0, 0);
             }
         });
 
@@ -158,41 +168,5 @@ public class Register2Fragment extends Fragment {
         }
 
         return s;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        View view = getActivity().getWindow().getDecorView().findViewById(android.R.id.content);
-
-        Log.i(TAG, "onRequestPermissionResult");
-        if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE_LOCATION) {
-            if (grantResults.length <= 0) {
-                // If user interaction was interrupted, the permission request is cancelled and you
-                // receive empty arrays.
-                Log.i(TAG, "User interaction was cancelled.");
-            }else {
-                // Permission denied
-                Snackbar.make(
-                        view,
-                        R.string.penjelasan_permission_dibutuhkan,
-                        Snackbar.LENGTH_INDEFINITE)
-                        .setAction(R.string.pengaturan, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                // Build intent that displays the App settings screen.
-                                Intent intent = new Intent();
-                                intent.setAction(
-                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package",
-                                        BuildConfig.APPLICATION_ID, null);
-                                intent.setData(uri);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                            }
-                        })
-                        .show();
-            }
-        }
     }
 }

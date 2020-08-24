@@ -1,9 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_main"
     tools:context=".Register.PlacePickerActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:paddingStart="16dp"
+        android:paddingTop="17dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="17dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgBtnBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_back"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Cari Lokasi"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_below="@+id/titleBar"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MapsActivity" />
+    
+    <RelativeLayout
+        android:id="@+id/lySelectLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_place_picker_white"
+        android:padding="16dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+        <ImageView
+            android:id="@+id/imgIconLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_register_location"/>
+        <TextView
+            android:id="@+id/tvLocationName"
+            android:layout_toEndOf="@+id/imgIconLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place name"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="16dp"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+        <Button
+            android:id="@+id/btnSelectLocation"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="Pilih Lokasi"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_green_rounded"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/imgIconLocation"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

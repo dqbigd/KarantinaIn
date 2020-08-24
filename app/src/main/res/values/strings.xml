@@ -15,7 +15,10 @@
     <string name="usia">Usia</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
 
-    <!--    kumpulan array-->
+<!--    API KEY-->
+    <string name="google_maps_api">AIzaSyDXIWm5YmDtW2WDW6AeQeqeHtmxHLucKUM</string>
+
+<!--    kumpulan array-->
     <string-array name="spin_gender">
         <item>Laki - laki</item>
         <item>Perempuan</item>
