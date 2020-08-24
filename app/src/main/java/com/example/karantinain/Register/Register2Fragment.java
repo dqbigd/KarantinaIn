@@ -1,6 +1,7 @@
 package com.example.karantinain.Register;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,13 +22,22 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.karantinain.Api.InitRetrofit;
 import com.example.karantinain.BuildConfig;
+import com.example.karantinain.Login.LoginActivity;
+import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.Main.MainActivity;
 import com.example.karantinain.R;
+import com.example.karantinain.Utils.SharedPrefManager;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.material.snackbar.Snackbar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Register2Fragment extends Fragment {
     private final static int PLACE_PICKER_REQUEST = 32;
@@ -37,15 +47,15 @@ public class Register2Fragment extends Fragment {
     public static String EXTRA_USERNAME = "extra_username";
     public static String EXTRA_PASSWORD = "extra_password";
     public static String EXTRA_PHONE = "extra_phone";
-    public static String EXTRA_LATITUDE = "extra_latitude";
-    public static String EXTRA_LONGITUDE = "extra_longitude";
+//    public static String EXTRA_LATITUDE = "extra_latitude";
+//    public static String EXTRA_LONGITUDE = "extra_longitude";
 
     WifiManager wifiManager;
 
     CheckBox cbBatuk, cbDemam, cbSesakNapas, cbPilek, cbSakitTenggorokan, cbSakitKepala, cbMual, cbLainnya;
     Spinner spGender, spAge;
-    String name, email, username, password, phone, gender, age, indication, sLatitude, sLongitude;
-    Double latitude, longitude;
+    String name, email, username, password, phone, gender, age, indication, latitude, longitude;
+//    Double latitude, longitude;
 
     public Register2Fragment() {
         // Required empty public constructor
@@ -90,15 +100,50 @@ public class Register2Fragment extends Fragment {
                     indication = "Tidak ada";
                 }
 
-                latitude = Double.parseDouble(RegisterUtils.getKeyRegisterLatitude(getContext()));
-                longitude =  Double.parseDouble(RegisterUtils.getKeyRegisterLongitude(getContext()));
+                latitude = RegisterUtils.getKeyRegisterLatitude(getContext());
+                longitude = RegisterUtils.getKeyRegisterLongitude(getContext());
 
                 Log.d("apapun", name+" "+email+" "+username+" "+password+" "+phone+" "+gender+" "+age+" "+indication+"\n"+latitude+" "+longitude);
 //                RegisterUtils.setRegisterLocation(getContext(), 0, 0);
+                sendData(name, email, username, password, phone, gender, age, indication, latitude, longitude);
             }
         });
 
         return view;
+    }
+
+    private void sendData(String name,String email,String username,String password,String phone,String gender,String age,String indication,String latitude,String longitude) {
+        final ProgressDialog dialog = new ProgressDialog(getContext());
+        dialog.setTitle("Mengirimkan data");
+        dialog.setMessage("Loading ...");
+        dialog.setCancelable(true);
+        dialog.show();
+
+        Call<RegisterResponse> call = InitRetrofit.getInstance().signUp(name, email, username, password, phone, gender, age, indication, latitude, longitude);
+        call.enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getMessage().equals("Ok.")){
+                        dialog.dismiss();
+
+                        RegisterUtils.setRegisterLocation(getContext(), 0, 0);
+                        Toast.makeText(getContext(), "Pendaftaran berhasil", Toast.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                        getActivity().finish();
+                    }else{
+                        Toast.makeText(getContext(), "Terjadi masalah, harap lakukan pendaftaran ulang", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Mohon cek koneksi internet anda", Toast.LENGTH_SHORT).show();
+                Log.d("RegisterFragment", "onFailure: "+t.getMessage());
+            }
+        });
     }
 
     private void spinnerSetup() {

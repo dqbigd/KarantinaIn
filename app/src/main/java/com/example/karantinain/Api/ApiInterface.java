@@ -26,13 +26,15 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("/auth/signup")
     Call<RegisterResponse> signUp(@Field("fullname") String fullName,
-                                    @Field("email") String email,
-                                    @Field("username") String username,
-                                    @Field("password") String password,
-                                    @Field("phoneNumber") String phoneNumber,
-                                    @Field("gender") String gender,
-                                    @Field("age") String age,
-                                    @Field("indication") String indication);
+                                  @Field("email") String email,
+                                  @Field("username") String username,
+                                  @Field("password") String password,
+                                  @Field("phoneNumber") String phoneNumber,
+                                  @Field("gender") String gender,
+                                  @Field("age") String age,
+                                  @Field("indication") String indication,
+                                  @Field("latitude") String latitude,
+                                  @Field("longitude") String longitude);
 
     //Login
     @FormUrlEncoded

@@ -4,6 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RegisterData {
+    @SerializedName("role")
+    @Expose
+    private String role;
     @SerializedName("_id")
     @Expose
     private String id;
@@ -34,9 +37,20 @@ public class RegisterData {
     @SerializedName("token")
     @Expose
     private String token;
+    @SerializedName("latitude")
+    @Expose
+    private String latitude;
     @SerializedName("__v")
     @Expose
     private Integer v;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getId() {
         return id;
@@ -116,6 +130,14 @@ public class RegisterData {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
     public Integer getV() {
