@@ -16,10 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Main.Insight.DetailArticleInsightActivity"></activity>
 
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_api"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_api" />
 
-        <activity android:name=".Register.PlacePickerActivity"></activity>
+        <activity android:name=".Register.PlacePickerActivity" />
         <activity android:name=".Main.Profile.SportHistoryActivity" />
         <activity android:name=".Main.Profile.FoodHistoryActivity" />
         <activity android:name=".Main.Profile.EditAccountActivity" />

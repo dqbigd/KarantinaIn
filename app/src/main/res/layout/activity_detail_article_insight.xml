@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main.Insight.DetailArticleInsightActivity"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:paddingStart="16dp"
+        android:paddingTop="17dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="17dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgBtnBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_back"/>
+            <TextView
+                android:id="@+id/tvTitleBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/rekomendasi_kegiatan"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:gravity="center"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ProgressBar
+        android:id="@+id/pbInsight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"/>
+    <WebView
+        android:id="@+id/wvDetailInsight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
