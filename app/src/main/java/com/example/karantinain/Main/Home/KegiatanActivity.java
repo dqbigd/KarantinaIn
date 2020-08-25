@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import retrofit2.Response;
 public class KegiatanActivity extends AppCompatActivity {
     RecyclerView rvKegiatan;
     ProgressBar pbKegiatan;
+    EditText etKegiatan;
 
     private ArrayList<RecommendActivityData> recommendActivityDataArrayList = new ArrayList<>();
     private RecommendActivityAdapter recommendActivityAdapter;
@@ -36,6 +40,7 @@ public class KegiatanActivity extends AppCompatActivity {
 
         rvKegiatan = findViewById(R.id.rvKegiatan);
         pbKegiatan = findViewById(R.id.pbKegiatan);
+        etKegiatan = findViewById(R.id.etKegiatan);
 
         findViewById(R.id.imgBtnBack).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +51,35 @@ public class KegiatanActivity extends AppCompatActivity {
 
         setupRecommendActivity();
 
+        etKegiatan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+    }
+
+    private void filter(String keyword) {
+        ArrayList<RecommendActivityData> filteredList = new ArrayList<>();
+
+        for (RecommendActivityData item : recommendActivityDataArrayList){
+            if (item.getTitle().toLowerCase().contains(keyword.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+
+        recommendActivityAdapter.filterList(filteredList);
     }
 
     private void setupRecommendActivity() {

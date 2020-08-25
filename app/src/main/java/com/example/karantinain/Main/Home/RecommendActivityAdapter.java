@@ -89,4 +89,9 @@ public class RecommendActivityAdapter extends RecyclerView.Adapter<RecommendActi
             imgBtnOpen = itemView.findViewById(R.id.imgBtnOpen);
         }
     }
+
+    public void filterList(ArrayList<RecommendActivityData> filteredList){
+        listRecommendActivity = filteredList;
+        notifyDataSetChanged();
+    }
 }

@@ -40,22 +40,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Register2Fragment extends Fragment {
-    private final static int PLACE_PICKER_REQUEST = 32;
-
     public static String EXTRA_NAME = "extra_name";
     public static String EXTRA_EMAIL = "extra_email";
     public static String EXTRA_USERNAME = "extra_username";
     public static String EXTRA_PASSWORD = "extra_password";
     public static String EXTRA_PHONE = "extra_phone";
-//    public static String EXTRA_LATITUDE = "extra_latitude";
-//    public static String EXTRA_LONGITUDE = "extra_longitude";
 
     WifiManager wifiManager;
 
     CheckBox cbBatuk, cbDemam, cbSesakNapas, cbPilek, cbSakitTenggorokan, cbSakitKepala, cbMual, cbLainnya;
     Spinner spGender, spAge;
     String name, email, username, password, phone, gender, age, indication, latitude, longitude;
-//    Double latitude, longitude;
 
     public Register2Fragment() {
         // Required empty public constructor
@@ -103,8 +98,6 @@ public class Register2Fragment extends Fragment {
                 latitude = RegisterUtils.getKeyRegisterLatitude(getContext());
                 longitude = RegisterUtils.getKeyRegisterLongitude(getContext());
 
-                Log.d("apapun", name+" "+email+" "+username+" "+password+" "+phone+" "+gender+" "+age+" "+indication+"\n"+latitude+" "+longitude);
-//                RegisterUtils.setRegisterLocation(getContext(), 0, 0);
                 sendData(name, email, username, password, phone, gender, age, indication, latitude, longitude);
             }
         });
