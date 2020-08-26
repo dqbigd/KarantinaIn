@@ -5,6 +5,7 @@ import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.Login.ProfileResponse;
 import com.example.karantinain.Main.Home.ContentEducationResponse;
 import com.example.karantinain.Main.Home.RecommendActivityResponse;
+import com.example.karantinain.Main.Insight.FoodResponse;
 import com.example.karantinain.Register.RegisterResponse;
 
 import java.util.List;
@@ -65,6 +66,10 @@ public interface ApiInterface {
     //Content Education (Home)
     @GET("/education")
     Call<ContentEducationResponse> contentEducation(@Header("Authorization") String token);
+
+    //Food (Insight)
+    @GET("/food")
+    Call<FoodResponse> food(@Header("Authorization") String token);
 
 //    //LUG API Schedule Today
 //    @GET("/schedule/today")

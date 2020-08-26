@@ -169,6 +169,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"/>
+            <ProgressBar
+                android:id="@+id/pbFood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFoodRecommendation"
                 android:layout_width="match_parent"
