@@ -4,6 +4,7 @@ import com.example.karantinain.Login.ForgotPassword.ForgotPasswordResponse;
 import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.Login.ProfileResponse;
 import com.example.karantinain.Main.Home.ContentEducationResponse;
+import com.example.karantinain.Main.Home.LocationResponse;
 import com.example.karantinain.Main.Home.RecommendActivityResponse;
 import com.example.karantinain.Main.Insight.FoodResponse;
 import com.example.karantinain.Register.RegisterResponse;
@@ -58,6 +59,13 @@ public interface ApiInterface {
     //Profile
     @GET("/user/profile")
     Call<ProfileResponse> profile(@Header("Authorization") String token);
+
+    //Location GPS (Home)
+    @FormUrlEncoded
+    @POST("/location")
+    Call<LocationResponse> location(@Header("Authorization") String token,
+                                    @Field("latitude") String latitude,
+                                    @Field("longitude") String longitude);
 
     //Recommend Activity (Home)
     @GET("/activity")

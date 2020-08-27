@@ -469,6 +469,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
             Location location = intent.getParcelableExtra(LocationUpdatesService.EXTRA_LOCATION);
             if (location != null) {
                 Geocoder geocoder = new Geocoder(getContext());
+                sendDataLocation(location);
                 try {
                     List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                     tvLocation.setText(addresses.get(0).getAddressLine(0));
@@ -480,6 +481,33 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
 //                Toast.makeText(MainActivity.this, Utils.getLocationText(location), Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void sendDataLocation(Location location) {
+        String token = SharedPrefManager.getKeyToken(getContext());
+        String latitude, longitude;
+        latitude = String.valueOf(location.getLatitude());
+        longitude = String.valueOf(location.getLongitude());
+
+        Call<LocationResponse> call = InitRetrofit.getInstance().location(token, latitude, longitude);
+        call.enqueue(new Callback<LocationResponse>() {
+            @Override
+            public void onResponse(Call<LocationResponse> call, Response<LocationResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getMessage().equals("Ok.")){
+                        Log.d(TAG, "location update to API : "+latitude+", "+longitude);
+                    }
+                }else {
+                    Toast.makeText(getActivity(), "Terdapat gangguan pada server", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LocationResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "Gagal mengirimkan lokasi terkini anda", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure: "+t.getMessage());
+            }
+        });
     }
 
     private void setButtonsState(boolean requestingLocationUpdates) {
