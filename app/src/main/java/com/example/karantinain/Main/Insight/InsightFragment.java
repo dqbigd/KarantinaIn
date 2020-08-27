@@ -5,7 +5,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +17,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
+import com.example.karantinain.Onboarding.OnboardingAdapter;
+import com.example.karantinain.Onboarding.OnboardingItem;
 import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
 
@@ -29,6 +33,8 @@ public class InsightFragment extends Fragment {
     ProgressBar pbFood;
     RecyclerView rvVideo, rvFoodCategory, rvFoodRecommendation, rvSport;
 
+    private ArrayList<CategoryFood> categoryFoodArrayList = new ArrayList<>();
+    private CategoryFoodAdapter categoryFoodAdapter;
     private ArrayList<FoodData> foodDataArrayList = new ArrayList<>();
     private FoodAdapter foodAdapter;
     
@@ -40,6 +46,7 @@ public class InsightFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_insight, container, false);
 
+        rvFoodCategory = view.findViewById(R.id.rvFoodCategory);
         rvFoodRecommendation = view.findViewById(R.id.rvFoodRecommendation);
         pbFood = view.findViewById(R.id.pbFood);
 
@@ -63,7 +70,34 @@ public class InsightFragment extends Fragment {
     }
 
     private void setupCategoryFood() {
+        SnapHelper helper = new LinearSnapHelper();
+        helper.attachToRecyclerView(rvFoodRecommendation);
 
+        CategoryFood item1 = new CategoryFood();
+        item1.setTitle("All");
+        item1.setActive(true);
+
+        CategoryFood item2 = new CategoryFood();
+        item2.setTitle("Buah - buahan");
+        item2.setActive(false);
+
+        CategoryFood item3 = new CategoryFood();
+        item3.setTitle("Sayur");
+        item2.setActive(false);
+
+        CategoryFood item4 = new CategoryFood();
+        item4.setTitle("Daging");
+        item2.setActive(false);
+
+        categoryFoodArrayList.add(item1);
+        categoryFoodArrayList.add(item2);
+        categoryFoodArrayList.add(item3);
+        categoryFoodArrayList.add(item4);
+
+        categoryFoodAdapter = new CategoryFoodAdapter(categoryFoodArrayList);
+
+        rvFoodCategory.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvFoodCategory.setAdapter(categoryFoodAdapter);
     }
 
     private void setupFood() {
