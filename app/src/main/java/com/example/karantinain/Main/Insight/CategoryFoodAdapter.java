@@ -39,9 +39,11 @@ public class CategoryFoodAdapter extends RecyclerView.Adapter<CategoryFoodAdapte
 
         if (viewType == 0){
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_insight_category_food_active, parent, false);
+            context = view.getContext();
             return new CategoryFoodAdapter.CategoryFoodHolder(view);
         }else{
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_insight_category_food_inactive, parent, false);
+            context = view.getContext();
             return new CategoryFoodAdapter.CategoryFoodHolder(view);
         }
 
@@ -49,12 +51,16 @@ public class CategoryFoodAdapter extends RecyclerView.Adapter<CategoryFoodAdapte
 
     @Override
     public void onBindViewHolder(@NonNull CategoryFoodHolder holder, int position) {
+
         holder.setCategoryFoodData(categoryFoodArrayList.get(position));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, categoryFoodArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+//                InsightFragment insightFragment = new InsightFragment();
+                Toast.makeText(context, categoryFoodArrayList.get(position).getCategory(), Toast.LENGTH_SHORT).show();
+//                insightFragment.setupFood();
+//                insightFragment.filter(categoryFoodArrayList.get(position).getCategory());
 //                if (!categoryFoodArrayList.get(position).isActive()){
 //                    categoryFoodArrayList.get(position).setActive(true);
 //                }
@@ -83,10 +89,5 @@ public class CategoryFoodAdapter extends RecyclerView.Adapter<CategoryFoodAdapte
         void setCategoryFoodData(CategoryFood categoryFood){
             tvTitle.setText(categoryFood.getTitle());
         }
-    }
-
-    public void filterList(ArrayList<CategoryFood> filteredList){
-        categoryFoodArrayList = filteredList;
-        notifyDataSetChanged();
     }
 }

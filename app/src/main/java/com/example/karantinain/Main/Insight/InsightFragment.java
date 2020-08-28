@@ -17,8 +17,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
-import com.example.karantinain.Onboarding.OnboardingAdapter;
-import com.example.karantinain.Onboarding.OnboardingItem;
 import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
 
@@ -66,6 +64,8 @@ public class InsightFragment extends Fragment {
         setupCategoryFood();
         setupFood();
 
+
+
         return view;
     }
 
@@ -76,18 +76,22 @@ public class InsightFragment extends Fragment {
         CategoryFood item1 = new CategoryFood();
         item1.setTitle("All");
         item1.setActive(true);
+        item1.setCategory("all");
 
         CategoryFood item2 = new CategoryFood();
         item2.setTitle("Buah - buahan");
         item2.setActive(false);
+        item2.setCategory("buah");
 
         CategoryFood item3 = new CategoryFood();
         item3.setTitle("Sayur");
-        item2.setActive(false);
+        item3.setActive(false);
+        item3.setCategory("sayur");
 
         CategoryFood item4 = new CategoryFood();
         item4.setTitle("Daging");
-        item2.setActive(false);
+        item4.setActive(false);
+        item4.setCategory("daging");
 
         categoryFoodArrayList.add(item1);
         categoryFoodArrayList.add(item2);
@@ -100,7 +104,20 @@ public class InsightFragment extends Fragment {
         rvFoodCategory.setAdapter(categoryFoodAdapter);
     }
 
-    private void setupFood() {
+    public void filter(String category) {
+        ArrayList<FoodData> filteredList = new ArrayList<>();
+        if (!category.equals("all")){
+            for (FoodData item : foodDataArrayList){
+                if (item.getCategory().toLowerCase().equals(category.toLowerCase())){
+                    filteredList.add(item);
+                }
+            }
+        }
+
+        foodAdapter.filterList(filteredList);
+    }
+
+    public void setupFood() {
         rvFoodRecommendation.setLayoutManager(new LinearLayoutManager(getContext()));
         rvFoodRecommendation.setAdapter(foodAdapter);
 

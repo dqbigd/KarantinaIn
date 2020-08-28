@@ -2,6 +2,7 @@ package com.example.karantinain.Main.Home;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -29,6 +31,7 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +50,7 @@ import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -54,6 +58,8 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 public class HomeFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener{
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -255,9 +261,46 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-//        if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA){
-//
-//        }
+        if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA && resultCode == RESULT_OK){
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            ImageUpload(bitmap);
+        }
+    }
+
+    private void ImageUpload(Bitmap bitmap) {
+        final ProgressDialog dialog = new ProgressDialog(getContext());
+        dialog.setTitle("Mengirimkan data");
+        dialog.setMessage("Loading ...");
+        dialog.setCancelable(true);
+        dialog.show();
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        String image = Base64.encodeToString(byteArrayOutputStream.toByteArray(),Base64.DEFAULT);
+        String token = SharedPrefManager.getKeyToken(getContext());
+
+        Call<SelfieResponse> call = InitRetrofit.getInstance().selfie(token, image);
+        call.enqueue(new Callback<SelfieResponse>() {
+            @Override
+            public void onResponse(Call<SelfieResponse> call, Response<SelfieResponse> response) {
+                if (response.isSuccessful()){
+                    if (response.body().getMessage().equals("Ok.")){
+                        dialog.dismiss();
+                        Toast.makeText(getContext(), "Berhasil Upload foto terbaru", Toast.LENGTH_SHORT).show();
+                        Log.d("isSuccessSHIT", response.body().getData().getImage());
+                    }
+                }else{
+                    Log.d("isSuccessSHIT", response.message());
+                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SelfieResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Failure", Toast.LENGTH_SHORT).show();
+                Log.d("onFailureSHIT", t.getMessage());
+            }
+        });
     }
 
     @Override

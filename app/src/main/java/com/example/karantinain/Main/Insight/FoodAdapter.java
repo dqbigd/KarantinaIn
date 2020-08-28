@@ -64,6 +64,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
         return foodDataArrayList.size();
     }
 
+    public void filterList(ArrayList<FoodData> filteredList) {
+        foodDataArrayList = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class FoodHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvDesc;
         ImageView imgBanner;

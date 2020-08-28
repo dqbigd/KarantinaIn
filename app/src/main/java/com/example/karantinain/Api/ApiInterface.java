@@ -6,6 +6,7 @@ import com.example.karantinain.Login.ProfileResponse;
 import com.example.karantinain.Main.Home.ContentEducationResponse;
 import com.example.karantinain.Main.Home.LocationResponse;
 import com.example.karantinain.Main.Home.RecommendActivityResponse;
+import com.example.karantinain.Main.Home.SelfieResponse;
 import com.example.karantinain.Main.Insight.FoodResponse;
 import com.example.karantinain.Register.RegisterResponse;
 
@@ -59,6 +60,12 @@ public interface ApiInterface {
     //Profile
     @GET("/user/profile")
     Call<ProfileResponse> profile(@Header("Authorization") String token);
+
+    //Selfie (Home)
+    @FormUrlEncoded
+    @POST("/selfie")
+    Call<SelfieResponse> selfie(@Header("Authorization") String token,
+                                  @Field("image") String image);
 
     //Location GPS (Home)
     @FormUrlEncoded
