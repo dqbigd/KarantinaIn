@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="160dp"
+            android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:foregroundGravity="center"

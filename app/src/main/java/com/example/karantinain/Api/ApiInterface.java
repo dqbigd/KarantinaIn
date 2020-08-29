@@ -8,6 +8,7 @@ import com.example.karantinain.Main.Home.LocationResponse;
 import com.example.karantinain.Main.Home.RecommendActivityResponse;
 import com.example.karantinain.Main.Home.SelfieResponse;
 import com.example.karantinain.Main.Insight.FoodResponse;
+import com.example.karantinain.Main.Insight.VideoResponse;
 import com.example.karantinain.Register.RegisterResponse;
 
 import java.util.List;
@@ -82,30 +83,14 @@ public interface ApiInterface {
     @GET("/education")
     Call<ContentEducationResponse> contentEducation(@Header("Authorization") String token);
 
+    //Video (Insight)
+    @GET("/youtube")
+    Call<VideoResponse> video(@Header("Authorization") String token);
+
     //Food (Insight)
     @GET("/food")
     Call<FoodResponse> food(@Header("Authorization") String token);
 
-//    //LUG API Schedule Today
-//    @GET("/schedule/today")
-//    Call<ScheduleResponse> scheduleToday(@Header("Authorization") String token);
-//
-//    //LUG API Schedule Weekly
-//    @GET("/schedule/weekly")
-//    Call<ScheduleResponse> scheduleWeekly(@Header("Authorization") String token);
-//
-//    //LUG API Schedule Mid (UTS)
-//    @GET("/schedule/midterm-exam")
-//    Call<ExamScheduleResponse> scheduleExamMid(@Header("Authorization") String token);
-//
-//    //LUG API Schedule Final (UAS)
-//    @GET("/schedule/final-exam")
-//    Call<ExamScheduleResponse> scheduleExamFinal(@Header("Authorization") String token);
-//
-//    //LUG API SSKM
-//    @GET("/points")
-//    Call<PointsResponse> points(@Header("Authorization") String token);
-//
 //    //LUG API Detail SSKM
 //    @GET
 //    Call<PointsDetailResponse> pointsDetail(@Header("Authorization") String token, @Url String url);

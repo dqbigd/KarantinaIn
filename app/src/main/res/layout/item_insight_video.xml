@@ -25,6 +25,13 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="0dp">
+<!--                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
+<!--                    android:id="@+id/youtube_player_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:videoId="S0Q4gqBUs7c"-->
+<!--                    app:autoPlay="true"-->
+<!--                    app:showFullScreenButton="false" />-->
                 <ImageView
                     android:id="@+id/imgBanner"
                     android:layout_width="match_parent"
@@ -35,6 +42,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cvBanner"
@@ -57,12 +65,6 @@
                 android:background="@android:color/white"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="4dp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorOnBoardInactive"
-                android:layout_alignParentBottom="true"/>
 
         </RelativeLayout>
         <ImageView

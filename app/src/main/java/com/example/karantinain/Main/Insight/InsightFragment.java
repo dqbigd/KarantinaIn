@@ -28,9 +28,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InsightFragment extends Fragment {
-    ProgressBar pbFood;
+    ProgressBar pbVideo, pbFood;
     RecyclerView rvVideo, rvFoodCategory, rvFoodRecommendation, rvSport;
 
+    private ArrayList videoDataArrayList = new ArrayList<>();
+    private VideoAdapter videoAdapter;
     private ArrayList<CategoryFood> categoryFoodArrayList = new ArrayList<>();
     private CategoryFoodAdapter categoryFoodAdapter;
     private ArrayList<FoodData> foodDataArrayList = new ArrayList<>();
@@ -44,6 +46,8 @@ public class InsightFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_insight, container, false);
 
+        rvVideo = view.findViewById(R.id.rvVideo);
+        pbVideo = view.findViewById(R.id.pbVideo);
         rvFoodCategory = view.findViewById(R.id.rvFoodCategory);
         rvFoodRecommendation = view.findViewById(R.id.rvFoodRecommendation);
         pbFood = view.findViewById(R.id.pbFood);
@@ -61,12 +65,51 @@ public class InsightFragment extends Fragment {
             }
         });
 
+        setupVideo();
         setupCategoryFood();
         setupFood();
 
 
 
         return view;
+    }
+
+    private void setupVideo() {
+        pbVideo.setVisibility(View.VISIBLE);
+
+        rvVideo.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvVideo.setAdapter(videoAdapter);
+
+        SnapHelper helper = new LinearSnapHelper();
+        helper.attachToRecyclerView(rvVideo);
+
+        String token = SharedPrefManager.getKeyToken(getContext());
+
+        Call<VideoResponse> call = InitRetrofit.getInstance().video(token);
+        call.enqueue(new Callback<VideoResponse>() {
+            @Override
+            public void onResponse(Call<VideoResponse> call, Response<VideoResponse> response) {
+                if (response.isSuccessful()) {
+                    pbVideo.setVisibility(View.GONE);
+                    if (response.body() != null && response.body().getMessage().equals("Ok.")) {
+                        if (response.body().getData().toString().equals("[]")) {
+                            Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
+                        } else {
+                            rvVideo.setVisibility(View.VISIBLE);
+                            videoDataArrayList = new ArrayList<>(response.body().getData());
+                            videoAdapter = new VideoAdapter(videoDataArrayList);
+                            rvVideo.setAdapter(videoAdapter);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VideoResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Mohon cek jaringan internet anda", Toast.LENGTH_SHORT).show();
+                Log.d("Response Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
     }
 
     private void setupCategoryFood() {

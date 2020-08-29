@@ -79,6 +79,11 @@
                     android:textSize="12sp"
                     android:clickable="true"/>
             </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/pbVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvVideo"
                 android:layout_width="match_parent"

@@ -10,8 +10,8 @@
     android:padding="24dp">
 
     <ImageView
-        android:layout_width="174dp"
-        android:layout_height="171dp"
+        android:layout_width="224dp"
+        android:layout_height="221dp"
         android:src="@drawable/logo_splash"
         android:layout_marginTop="100dp"
         android:layout_alignParentTop="true"
