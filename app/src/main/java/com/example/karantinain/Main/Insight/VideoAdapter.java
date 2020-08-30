@@ -42,7 +42,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
         VideoData videoData = videoDataArrayList.get(position);
 
         holder.tvTitle.setText(videoData.getTitle());
-        videoId = videoData.getUrl();
+//        videoId = videoData.getUrl();
 //        String substring = videoId.substring(videoId.length() - 11);
 //        Log.d("SUBSTRING", videoId);
 //        holder.youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
@@ -79,7 +79,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
     public class VideoHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
         ImageView imgBanner;
-//        YouTubePlayerView youTubePlayerView;
         public VideoHolder(@NonNull View itemView) {
             super(itemView);
             imgBanner = itemView.findViewById(R.id.imgBanner);

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.karantinain.Main.Chat.ChatFragment;
 import com.example.karantinain.Main.Home.HomeFragment;
 import com.example.karantinain.Main.Insight.InsightFragment;
 import com.example.karantinain.Main.Profile.ProfileFragment;

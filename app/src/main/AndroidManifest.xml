@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.Insight.DetailArticleInsightActivity"></activity>
+        <activity android:name=".Main.Insight.VideoActivity"></activity>
+        <activity android:name=".Main.Insight.DetailArticleInsightActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

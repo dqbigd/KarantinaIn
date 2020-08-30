@@ -3,6 +3,8 @@ package com.example.karantinain.Api;
 import com.example.karantinain.Login.ForgotPassword.ForgotPasswordResponse;
 import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.Login.ProfileResponse;
+import com.example.karantinain.Main.Chat.MessageResponse;
+import com.example.karantinain.Main.Chat.SendMessageResponse;
 import com.example.karantinain.Main.Home.ContentEducationResponse;
 import com.example.karantinain.Main.Home.LocationResponse;
 import com.example.karantinain.Main.Home.RecommendActivityResponse;
@@ -90,6 +92,12 @@ public interface ApiInterface {
     //Food (Insight)
     @GET("/food")
     Call<FoodResponse> food(@Header("Authorization") String token);
+
+    //Send Message (Chat)
+    @FormUrlEncoded
+    @POST("/chat")
+    Call<SendMessageResponse> sendMessage(@Header("Authorization") String token,
+                                          @Field("message") String message);
 
 //    //LUG API Detail SSKM
 //    @GET

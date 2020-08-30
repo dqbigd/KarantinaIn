@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.ChatFragment"
-    android:background="@android:color/white"
-    android:orientation="vertical">
+    tools:context=".Main.Chat.ChatFragment"
+    android:background="#0D1AAD6C"
+    android:orientation="vertical"
+    android:layout_marginBottom="58dp">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,11 +34,42 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
-</LinearLayout>
+
+    <EditText
+        android:id="@+id/etMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:hint="@string/ketik_pesan"
+        android:paddingTop="19dp"
+        android:paddingBottom="19dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="48dp"
+        android:textSize="12sp"/>
+    <ImageButton
+        android:id="@+id/imgBtnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chat_send"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:paddingBottom="12dp"
+        android:paddingEnd="24dp"/>
+    <ProgressBar
+        android:id="@+id/pbChat"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:paddingBottom="12dp"
+        android:paddingEnd="12dp"
+        android:visibility="gone"/>
+</RelativeLayout>
