@@ -79,7 +79,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 SharedPrefManager.setLoggedInStatus(getContext(), false, "");
                 SharedPrefManager.setAccount(getContext(), "", "");
-                SharedPrefManager.setProfile(getContext(), "", "", "", "", "", "");
+                SharedPrefManager.setProfile(getContext(), "","", "", "", "", "", "");
                 startActivity(new Intent(getContext(), MenuLoginActivity.class));
                 getActivity().finish();
             }

@@ -65,6 +65,13 @@ public class InsightFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.tvVideoAll).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), VideoActivity.class));
+            }
+        });
+
         setupVideo();
         setupCategoryFood();
         setupFood();
@@ -97,7 +104,7 @@ public class InsightFragment extends Fragment {
                         } else {
                             rvVideo.setVisibility(View.VISIBLE);
                             videoDataArrayList = new ArrayList<>(response.body().getData());
-                            videoAdapter = new VideoAdapter(videoDataArrayList);
+                            videoAdapter = new VideoAdapter(videoDataArrayList, false);
                             rvVideo.setAdapter(videoAdapter);
                         }
                     }

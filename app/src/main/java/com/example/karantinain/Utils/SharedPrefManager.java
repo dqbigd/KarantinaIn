@@ -11,6 +11,7 @@ public class SharedPrefManager {
     static final String KEY_SIGNIN_STATUS = "signin_status";
     static final String KEY_TOKEN = "token";
 
+    static final String KEY_PROFILE_ID = "profile_id";
     static final String KEY_PROFILE_USERNAME = "profile_username";
     static final String KEY_PROFILE_FULLNAME = "profile_fullname";
     static final String KEY_PROFILE_PHONE = "profile_phone";
@@ -54,8 +55,9 @@ public class SharedPrefManager {
         return getSharedPreference(context).getString(KEY_TOKEN, "");
     }
 
-    public static void setProfile(Context context, String username,String fullname, String phone, String gender, String age, String indication) {
+    public static void setProfile(Context context, String id,String username,String fullname, String phone, String gender, String age, String indication) {
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_PROFILE_ID, id);
         editor.putString(KEY_PROFILE_USERNAME, username);
         editor.putString(KEY_PROFILE_FULLNAME, fullname);
         editor.putString(KEY_PROFILE_PHONE, phone);
@@ -63,6 +65,10 @@ public class SharedPrefManager {
         editor.putString(KEY_PROFILE_AGE, age);
         editor.putString(KEY_PROFILE_INDICATION, indication);
         editor.apply();
+    }
+
+    public static String getIdProfile(Context context) {
+        return getSharedPreference(context).getString(KEY_PROFILE_ID, "");
     }
 
     public static String getUserNameProfile(Context context) {

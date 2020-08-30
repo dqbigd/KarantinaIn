@@ -156,6 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     dialog.dismiss();
 
+                    String id = response.body().getData().getId();
                     String username = response.body().getData().getUsername();
                     String fullname = response.body().getData().getFullname();
                     String phone = response.body().getData().getPhoneNumber();
@@ -164,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
                     String indication = response.body().getData().getIndication();
 
                     Log.d("Success LoadData ", response.body().getData().getFullname());
-                    SharedPrefManager.setProfile(getApplicationContext(), username, fullname, phone, gender, age, indication);
+                    SharedPrefManager.setProfile(getApplicationContext(), id, username, fullname, phone, gender, age, indication);
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
                 }else {

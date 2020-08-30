@@ -68,7 +68,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_toStartOf="@+id/tvFoodHistory"/>
                 <TextView
-                    android:id="@+id/tvFoodHistory"
+                    android:id="@+id/tvVideoAll"
                     android:layout_below="@+id/tvNutrition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

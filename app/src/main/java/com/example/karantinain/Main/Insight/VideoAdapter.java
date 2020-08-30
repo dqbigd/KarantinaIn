@@ -1,7 +1,6 @@
 package com.example.karantinain.Main.Insight;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.karantinain.R;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 
@@ -23,17 +19,34 @@ import java.util.ArrayList;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>{
     private ArrayList<VideoData> videoDataArrayList;
     private Context context;
+    private boolean vertical;
 
-    public VideoAdapter(ArrayList<VideoData> list){
+    public VideoAdapter(ArrayList<VideoData> list, boolean vertical){
         this.videoDataArrayList = list;
+        this.vertical = vertical;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(vertical){
+            return 0;
+        }
+        return 1;
     }
 
     @NonNull
     @Override
     public VideoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_insight_video, parent, false);
-        context = view.getContext();
-        return new VideoHolder(view);
+        View view;
+        if (viewType == 0){
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_insight_video_detail, parent, false);
+            context = view.getContext();
+            return new VideoHolder(view);
+        }else{
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_insight_video, parent, false);
+            context = view.getContext();
+            return new VideoHolder(view);
+        }
     }
 
     @Override
