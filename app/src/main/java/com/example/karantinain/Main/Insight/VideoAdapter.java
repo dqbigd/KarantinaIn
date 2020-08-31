@@ -1,6 +1,7 @@
 package com.example.karantinain.Main.Insight;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +56,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
         VideoData videoData = videoDataArrayList.get(position);
 
         holder.tvTitle.setText(videoData.getTitle());
-//        videoId = videoData.getUrl();
-//        String substring = videoId.substring(videoId.length() - 11);
+        videoId = videoData.getUrl().trim();
+        String substring = videoId.substring(videoId.length() - 11);
 //        Log.d("SUBSTRING", videoId);
 //        holder.youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
 //            @Override
@@ -65,6 +66,20 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
 //                youTubePlayer.cueVideo("8MTcml-rxgM", 0);
 //            }
 //        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sLink = substring;
+                String sTitleBar = videoData.getTitle();
+
+                Intent intentDetail = new Intent(context, VideoDetailActivity.class);
+
+                intentDetail.putExtra("EXTRA_DETAIL_VIDEO_TITLE", sTitleBar);
+                intentDetail.putExtra("EXTRA_DETAIL_VIDEO_LINK", sLink);
+
+                context.startActivity(intentDetail);
+            }
+        });
         Glide.with(holder.itemView.getContext())
                 .load(videoData.getImage())
                 .into(holder.imgBanner);
