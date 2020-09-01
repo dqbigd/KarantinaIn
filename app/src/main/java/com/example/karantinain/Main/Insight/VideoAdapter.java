@@ -58,14 +58,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
         holder.tvTitle.setText(videoData.getTitle());
         videoId = videoData.getUrl().trim();
         String substring = videoId.substring(videoId.length() - 11);
-//        Log.d("SUBSTRING", videoId);
-//        holder.youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-//            @Override
-//            public void onReady(YouTubePlayer youTubePlayer) {
-//                super.onReady(youTubePlayer);
-//                youTubePlayer.cueVideo("8MTcml-rxgM", 0);
-//            }
-//        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

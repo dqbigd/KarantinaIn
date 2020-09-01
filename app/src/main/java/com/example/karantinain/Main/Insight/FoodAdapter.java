@@ -49,10 +49,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
                 String sLink = foodData.getLink();
                 String sTitleBar = foodData.getTitle();
 
-                Intent intentDetail = new Intent(context, DetailArticleInsightActivity.class);
+                Intent intentDetail = new Intent(context, FoodDetailActivity.class);
 
-                intentDetail.putExtra("EXTRA_DETAIL_INSIGHT_ARTICLE_TITLE", sTitleBar);
-                intentDetail.putExtra("EXTRA_DETAIL_INSIGHT_ARTICLE_LINK", sLink);
+                intentDetail.putExtra("EXTRA_DETAIL_FOOD_TITLE", sTitleBar);
+                intentDetail.putExtra("EXTRA_DETAIL_FOOD_LINK", sLink);
 
                 context.startActivity(intentDetail);
             }

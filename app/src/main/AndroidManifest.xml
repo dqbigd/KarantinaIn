@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.Insight.VideoDetailActivity"></activity>
+        <activity android:name=".Main.Insight.FoodDetailActivity"></activity>
+        <activity android:name=".Main.Insight.VideoDetailActivity" />
         <activity android:name=".Main.Insight.VideoActivity" />
         <activity android:name=".Main.Insight.DetailArticleInsightActivity" />
 

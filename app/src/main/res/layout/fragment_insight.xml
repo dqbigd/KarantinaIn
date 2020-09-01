@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Main.Insight.InsightFragment"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="48dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
                 android:gravity="center"/>
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -183,38 +184,38 @@
                 android:id="@+id/rvFoodRecommendation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp">
-                <TextView
-                    android:id="@+id/tvOlahraga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rekomendasi Olahraga Ringan"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"/>
-                <TextView
-                    android:layout_below="@+id/tvOlahraga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Anjuran Olahraga ringan yang efektif untuk meningkatkan sistem imun tubuh anda"
-                    android:textColor="@android:color/black"
-                    android:textSize="10sp"
-                    android:layout_marginEnd="16dp"/>
-            </RelativeLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSport"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:layout_marginTop="24dp"-->
+<!--                android:layout_marginBottom="16dp"-->
+<!--                android:paddingStart="24dp"-->
+<!--                android:paddingEnd="24dp">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tvOlahraga"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Rekomendasi Olahraga Ringan"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:textSize="14sp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_below="@+id/tvOlahraga"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Anjuran Olahraga ringan yang efektif untuk meningkatkan sistem imun tubuh anda"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:textSize="10sp"-->
+<!--                    android:layout_marginEnd="16dp"/>-->
+<!--            </RelativeLayout>-->
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rvSport"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
