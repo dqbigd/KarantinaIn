@@ -32,7 +32,7 @@
         android:id="@+id/tvDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aplikasi untuk memastikan pasien ODP tetap berada dirumah, memantau perkembangan kesehatan tubuh pasien dan menyajikan informasi yang dapat membantu meningkatkan immunitas tubuh pasien ODP"
+        android:text="Memonitoring keberadaan karantina mandiri ODP, memantau perkembangan kesehatan tubuh ODP dan menyajikan konten atau video edukasi yang dapat membantu meningkatkan imunitas tubuh ODP."
         android:layout_above="@+id/lyButton"
         android:layout_marginBottom="100dp"
         android:textAlignment="center"

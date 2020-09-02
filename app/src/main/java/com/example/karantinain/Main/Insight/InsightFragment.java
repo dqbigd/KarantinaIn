@@ -1,6 +1,7 @@
 package com.example.karantinain.Main.Insight;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
+import com.example.karantinain.Main.Home.RecommendActivityData;
 import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
 
@@ -27,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class InsightFragment extends Fragment {
+public class InsightFragment extends Fragment{
     ProgressBar pbVideo, pbFood;
     RecyclerView rvVideo, rvFoodCategory, rvFoodRecommendation, rvSport;
 
@@ -35,7 +37,7 @@ public class InsightFragment extends Fragment {
     private VideoAdapter videoAdapter;
     private ArrayList<CategoryFood> categoryFoodArrayList = new ArrayList<>();
     private CategoryFoodAdapter categoryFoodAdapter;
-    private ArrayList<FoodData> foodDataArrayList = new ArrayList<>();
+    public ArrayList<FoodData> foodDataArrayList = new ArrayList<>();
     private FoodAdapter foodAdapter;
     
     public InsightFragment() {
@@ -76,10 +78,33 @@ public class InsightFragment extends Fragment {
         setupCategoryFood();
         setupFood();
 
-
+        view.findViewById(R.id.tvRekomendasi).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!foodDataArrayList.isEmpty()){
+                    filter("buah");
+                }
+            }
+        });
 
         return view;
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//
+//    }
+
+    //    @Override
+//    public void onStart() {
+//        super.onStart();
+//        if (foodDataArrayList.size()!=0){
+//            if (!InsightUtils.getCategory(getContext()).equals("all")){
+//                filter(InsightUtils.getCategory(getContext()));
+//            }
+//        }
+//    }
 
     private void setupVideo() {
         pbVideo.setVisibility(View.VISIBLE);
@@ -148,6 +173,8 @@ public class InsightFragment extends Fragment {
         categoryFoodArrayList.add(item3);
         categoryFoodArrayList.add(item4);
 
+//        categoryFoodArrayList.get(0).setActive(false);
+
         categoryFoodAdapter = new CategoryFoodAdapter(categoryFoodArrayList);
 
         rvFoodCategory.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -188,6 +215,10 @@ public class InsightFragment extends Fragment {
                             foodDataArrayList = new ArrayList<>(response.body().getData());
                             foodAdapter = new FoodAdapter(foodDataArrayList);
                             rvFoodRecommendation.setAdapter(foodAdapter);
+//                            if (!InsightUtils.getCategory(getContext()).equals("all")){
+//                                filter(InsightUtils.getCategory(getContext()));
+//                            }
+
                         }
                     }
                 }
@@ -200,4 +231,15 @@ public class InsightFragment extends Fragment {
             }
         });
     }
+
+//    @Override
+//    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+//        if (key.equals(InsightUtils.KEY_INSIGHT_CATEGORY)){
+//            if (foodDataArrayList.size()!=0){
+//                if (!InsightUtils.getCategory(getContext()).equals("all")){
+//                    filter(InsightUtils.getCategory(getContext()));
+//                }
+//            }
+//        }
+//    }
 }

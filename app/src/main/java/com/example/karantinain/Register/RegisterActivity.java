@@ -45,4 +45,10 @@ public class RegisterActivity extends AppCompatActivity {
 //    public void selectFragment(int position){
 //        viewPager.setCurrentItem(position, true);
 //    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RegisterUtils.setRegisterLocation(getApplicationContext(), 0, 0);
+    }
 }

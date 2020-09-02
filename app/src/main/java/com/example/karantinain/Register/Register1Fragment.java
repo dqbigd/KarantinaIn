@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ public class Register1Fragment extends Fragment {
         etPhoneNumber = view.findViewById(R.id.etPhoneNumber);
         btnNext = view.findViewById(R.id.btnNext);
 
-
+        Log.d("TAG", "ini"+RegisterUtils.getKeyRegisterLatitude(getContext())+"ini");
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,5 +128,11 @@ public class Register1Fragment extends Fragment {
 
         return matcher.matches();
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RegisterUtils.setRegisterLocation(getContext(), 0, 0);
     }
 }

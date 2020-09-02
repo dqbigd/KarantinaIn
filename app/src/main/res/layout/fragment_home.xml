@@ -247,6 +247,7 @@
                         android:textColor="@android:color/white"
                         android:background="@drawable/bg_green_rounded"/>
                     <TextView
+                        android:id="@+id/tvImageDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tidak ada foto terkini"

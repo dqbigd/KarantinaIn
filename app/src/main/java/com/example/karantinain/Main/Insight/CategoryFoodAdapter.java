@@ -1,6 +1,7 @@
 package com.example.karantinain.Main.Insight;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,13 +60,11 @@ public class CategoryFoodAdapter extends RecyclerView.Adapter<CategoryFoodAdapte
             public void onClick(View v) {
 //                InsightFragment insightFragment = new InsightFragment();
                 Toast.makeText(context, categoryFoodArrayList.get(position).getCategory(), Toast.LENGTH_SHORT).show();
-//                insightFragment.setupFood();
-//                insightFragment.filter(categoryFoodArrayList.get(position).getCategory());
-//                if (!categoryFoodArrayList.get(position).isActive()){
-//                    categoryFoodArrayList.get(position).setActive(true);
-//                }
-//                for (int i =0;i < categoryFoodArrayList.size(); i++){
-//
+//                InsightUtils.setCategory(context, categoryFoodArrayList.get(position).getCategory());
+
+//                if (!insightFragment.foodDataArrayList.isEmpty()){
+//                    Log.d("TAG", "tertekan");
+//                    (InsightFragment.filter(categoryFoodArrayList.get(position).getCategory());
 //                }
             }
         });

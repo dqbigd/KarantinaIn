@@ -64,11 +64,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
         return foodDataArrayList.size();
     }
 
-    public void filterList(ArrayList<FoodData> filteredList) {
-        foodDataArrayList = filteredList;
-        notifyDataSetChanged();
-    }
-
     public class FoodHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvDesc;
         ImageView imgBanner;
@@ -81,5 +76,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
             imgBanner = itemView.findViewById(R.id.imgBanner);
             imgBtnOpen = itemView.findViewById(R.id.imgBtnOpen);
         }
+    }
+
+    public void filterList(ArrayList<FoodData> filteredList) {
+        foodDataArrayList = filteredList;
+        notifyDataSetChanged();
     }
 }

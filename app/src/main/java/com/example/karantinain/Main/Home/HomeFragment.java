@@ -22,6 +22,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -77,7 +78,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     // Tracks the bound state of the service.
     private boolean mBound = false;
 
-    TextView tvName, tvLocation, tvSelanjutnya;
+    TextView tvName, tvLocation, tvSelanjutnya, tvImageDesc;
     Button btnActivateLocation, btnInactiveLocation, btnUploadPhoto;
     RecyclerView rvKegiatan, rvContent;
     ProgressBar pbKegiatan, pbContent;
@@ -112,6 +113,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         tvName = view.findViewById(R.id.tvName);
+        tvImageDesc = view.findViewById(R.id.tvImageDesc);
         tvLocation = view.findViewById(R.id.tvLocation);
         tvSelanjutnya = view.findViewById(R.id.tvFoodHistory);
         btnActivateLocation = (Button) view.findViewById(R.id.btnActivateLocation);
@@ -286,7 +288,10 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
                 if (response.isSuccessful()){
                     if (response.body().getMessage().equals("Ok.")){
                         dialog.dismiss();
+                        tvImageDesc.setText("Foto telah diupdate");
+                        btnUploadPhoto.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_grey_home_rounded));
                         Toast.makeText(getContext(), "Berhasil Upload foto terbaru", Toast.LENGTH_SHORT).show();
+
                         Log.d("isSuccessSHIT", response.body().getData().getImage());
                     }
                 }else{

@@ -5,6 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -22,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
@@ -33,7 +37,12 @@ import com.example.karantinain.R;
 import com.example.karantinain.Utils.SharedPrefManager;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,9 +57,11 @@ public class Register2Fragment extends Fragment {
 
     WifiManager wifiManager;
 
+    TextView tvLocation;
     CheckBox cbBatuk, cbDemam, cbSesakNapas, cbPilek, cbSakitTenggorokan, cbSakitKepala, cbMual, cbLainnya;
     Spinner spGender, spAge;
     String name, email, username, password, phone, gender, age, indication, latitude, longitude;
+    LatLng latLng;
 
     public Register2Fragment() {
         // Required empty public constructor
@@ -70,6 +81,7 @@ public class Register2Fragment extends Fragment {
         cbLainnya = view.findViewById(R.id.cbLainnya);
         spGender = view.findViewById(R.id.spGender);
         spAge = view.findViewById(R.id.spAge);
+        tvLocation = view.findViewById(R.id.tvLocation);
         wifiManager= (WifiManager) this.getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         view.findViewById(R.id.lyLocation).setOnClickListener(new View.OnClickListener() {
@@ -97,6 +109,8 @@ public class Register2Fragment extends Fragment {
 
                 latitude = RegisterUtils.getKeyRegisterLatitude(getContext());
                 longitude = RegisterUtils.getKeyRegisterLongitude(getContext());
+//                latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+//                tvLocation.setText(getAddress(latLng));
 
                 sendData(name, email, username, password, phone, gender, age, indication, latitude, longitude);
             }
@@ -105,7 +119,17 @@ public class Register2Fragment extends Fragment {
         return view;
     }
 
-    private void sendData(String name,String email,String username,String password,String phone,String gender,String age,String indication,String latitude,String longitude) {
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!RegisterUtils.getKeyRegisterLatitude(getContext()).equals("0.0")){
+            latLng = new LatLng(Double.parseDouble(RegisterUtils.getKeyRegisterLatitude(getContext())), Double.parseDouble(RegisterUtils.getKeyRegisterLongitude(getContext())));
+            tvLocation.setTextColor(Color.parseColor("#000000"));
+            tvLocation.setText(getAddress(latLng));
+        }
+    }
+
+    private void sendData(String name, String email, String username, String password, String phone, String gender, String age, String indication, String latitude, String longitude) {
         final ProgressDialog dialog = new ProgressDialog(getContext());
         dialog.setTitle("Mengirimkan data");
         dialog.setMessage("Loading ...");
@@ -206,5 +230,29 @@ public class Register2Fragment extends Fragment {
         }
 
         return s;
+    }
+
+    private String getAddress(LatLng latLng){
+
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(getContext(), Locale.getDefault());
+
+        try {
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+
+            return address;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Alamat tidak diketahui";
+
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RegisterUtils.setRegisterLocation(getContext(), 0, 0);
     }
 }

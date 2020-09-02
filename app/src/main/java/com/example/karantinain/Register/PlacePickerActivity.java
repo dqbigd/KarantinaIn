@@ -223,7 +223,7 @@ public class PlacePickerActivity extends AppCompatActivity implements OnMapReady
                             latitude = latLng.latitude;
                             longitude = latLng.longitude;
 
-                            Log.d("hiya2", latitude+" "+longitude);
+//                            Log.d("hiya2", latitude+" "+longitude);
 
                             nextFragment(latitude, longitude);
                         }else {
@@ -334,20 +334,6 @@ public class PlacePickerActivity extends AppCompatActivity implements OnMapReady
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
             String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
 
-//            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//            Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-//            if (prev != null) {
-//                fragmentTransaction.remove(prev);
-//            }
-//            fragmentTransaction.addToBackStack(null);
-//            DialogFragment dialogFragment = new ConfirmAddress();
-
-//            Bundle args = new Bundle();
-//            args.putDouble("lat", latLng.latitude);
-//            args.putDouble("long", latLng.longitude);
-//            args.putString("address", address);
-//            dialogFragment.setArguments(args);
-//            dialogFragment.show(fragmentTransaction, "dialog");
             return address;
         } catch (IOException e) {
             e.printStackTrace();

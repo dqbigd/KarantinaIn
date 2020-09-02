@@ -54,8 +54,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_place_picker_white"
         android:padding="16dp"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone">
+        android:layout_alignParentBottom="true">
         <ImageView
             android:id="@+id/imgIconLocation"
             android:layout_width="wrap_content"
@@ -66,7 +65,7 @@
             android:layout_toEndOf="@+id/imgIconLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Place name"
+            android:text="Pilih tempat tinggal anda"
             android:layout_marginTop="3dp"
             android:layout_marginStart="16dp"
             android:textSize="14sp"
