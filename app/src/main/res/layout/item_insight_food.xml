@@ -6,12 +6,12 @@
     android:layout_gravity="center"
     android:layout_marginEnd="24dp"
     android:layout_marginStart="24dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="4dp"
     android:layout_marginBottom="16dp">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="71dp"
+        android:layout_height="82dp"
         android:orientation="vertical"
         android:background="@android:color/white">
         <RelativeLayout
@@ -27,9 +27,7 @@
                     android:id="@+id/imgBanner"
                     android:layout_width="92dp"
                     android:layout_height="58dp"
-                    android:src="@color/colorRegisterInActive">
-
-                </ImageView>
+                    android:src="@color/colorRegisterInActive"/>
             </androidx.cardview.widget.CardView>
             <TextView
                 android:id="@+id/tvTitle"

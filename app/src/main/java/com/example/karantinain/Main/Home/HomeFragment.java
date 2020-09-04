@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,6 +83,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     Button btnActivateLocation, btnInactiveLocation, btnUploadPhoto;
     RecyclerView rvKegiatan, rvContent;
     ProgressBar pbKegiatan, pbContent;
+    RelativeLayout btnEmergency;
 
     private ArrayList<RecommendActivityData> recommendActivityDataArrayList = new ArrayList<>();
     private RecommendActivityAdapter recommendActivityAdapter;
@@ -116,6 +118,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         tvImageDesc = view.findViewById(R.id.tvImageDesc);
         tvLocation = view.findViewById(R.id.tvLocation);
         tvSelanjutnya = view.findViewById(R.id.tvFoodHistory);
+        btnEmergency = view.findViewById(R.id.btnEmergency);
         btnActivateLocation = (Button) view.findViewById(R.id.btnActivateLocation);
         btnInactiveLocation = view.findViewById(R.id.btnInactiveLocation);
         btnUploadPhoto = view.findViewById(R.id.btnUploadPhoto);
@@ -153,6 +156,13 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
                 requestPermissionLocation();
             }
         }
+
+        btnEmergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Emergency", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }

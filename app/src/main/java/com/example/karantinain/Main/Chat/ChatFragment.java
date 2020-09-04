@@ -116,7 +116,9 @@ public class ChatFragment extends Fragment {
                         public void onResponse(Call<SendMessageResponse> call, Response<SendMessageResponse> response) {
                             if (response.isSuccessful()) {
                                 if (response.body().getMessage().equals("Ok.")){
-                                    chatAdapter.notifyDataSetChanged();
+                                    if (!messageDataArrayList.isEmpty()){
+                                        chatAdapter.notifyDataSetChanged();
+                                    }
                                     pbChat.setVisibility(View.GONE);
                                     imgBtnSend.setVisibility(View.VISIBLE);
                                     etMessage.setText("");
@@ -159,7 +161,8 @@ public class ChatFragment extends Fragment {
                     if (response.body() != null && response.body().getMessage().equals("Ok.")) {
                         pbChatGet.setVisibility(View.GONE);
                         if (response.body().getData().toString().equals("[]")) {
-                            Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "kosong");
+//                            Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
                         } else {
                             messageDataArrayList = new ArrayList<>(response.body().getData());
                             chatAdapter = new ChatAdapter(messageDataArrayList, idProfile, usernameProfile);
@@ -190,7 +193,8 @@ public class ChatFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().getMessage().equals("Ok.")) {
                         if (response.body().getData().toString().equals("[]")) {
-                            Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "kosong");
+//                            Toast.makeText(getContext(), "Kosong", Toast.LENGTH_SHORT).show();
                         } else {
                             messageDataArrayList = new ArrayList<>(response.body().getData());
                             chatAdapter = new ChatAdapter(messageDataArrayList, idProfile, usernameProfile);

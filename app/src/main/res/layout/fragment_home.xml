@@ -1,366 +1,402 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Main.Home.HomeFragment"
     android:background="@android:color/white"
     android:layout_marginBottom="48dp">
-    <FrameLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="match_parent">
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="208dp"
-                android:background="@drawable/bg_home_green"
-                android:orientation="vertical"
-                android:paddingBottom="32dp">
-                <RelativeLayout
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="14dp">
-
-                    <ImageView
-                        android:id="@+id/imgLogo"
-                        android:layout_width="35dp"
-                        android:layout_height="33dp"
-                        android:layout_alignParentStart="true"
-                        android:background="@drawable/logo_home" />
-
-                    <ImageButton
-                        android:id="@+id/imgBtnNotification"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentEnd="true"
-                        android:background="@drawable/ic_notif" />
-
-                    <LinearLayout
-                        android:id="@+id/lyNotifDot"
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="3dp"
-                        android:background="@drawable/bg_red_circle"
+                    android:layout_height="208dp"
+                    android:background="@drawable/bg_home_green"
+                    android:orientation="vertical"
+                    android:paddingBottom="32dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:visibility="gone"/>
-                </RelativeLayout>
+                        android:paddingStart="20dp"
+                        android:paddingTop="18dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="14dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="33dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                        <ImageView
+                            android:id="@+id/imgLogo"
+                            android:layout_width="35dp"
+                            android:layout_height="33dp"
+                            android:layout_alignParentStart="true"
+                            android:background="@drawable/logo_home" />
 
-                    <TextView
-                        android:id="@+id/tvName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hai, "
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        <ImageButton
+                            android:id="@+id/imgBtnNotification"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/ic_notif" />
 
-                    <TextView
-                        android:id="@+id/tvBagaimana"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvName"
-                        android:layout_marginTop="4dp"
-                        android:text="Bagaimana keadaanmu? Semoga sehat selalu ya."
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp"/>
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:layout_marginTop="255dp"
-                android:layout_marginBottom="16dp"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp">
-
-                <TextView
-                    android:id="@+id/tvRekomendasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rekomendasi Kegiatan"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"/>
-                <TextView
-                    android:layout_below="@+id/tvRekomendasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tips - tips kegiatan bermanfaat yang dapat dilakukan ketika isolasi mandiri dirumah agar tidak bosan"
-                    android:textColor="@android:color/black"
-                    android:textSize="10sp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_toStartOf="@+id/tvFoodHistory"/>
-                <TextView
-                    android:id="@+id/tvFoodHistory"
-                    android:layout_below="@+id/tvRekomendasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/selanjutnya"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:textSize="12sp"
-                    android:clickable="true"/>
-            </RelativeLayout>
-            <ProgressBar
-                android:id="@+id/pbKegiatan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvKegiatan"
-                android:layout_width="match_parent"
-                android:layout_height="366dp"
-                android:visibility="gone">
-
-            </androidx.recyclerview.widget.RecyclerView>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:layout_marginTop="33dp"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:id="@+id/tvContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Konten Edukasi Isolasi Mandiri"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"/>
-                <TextView
-                    android:layout_below="@+id/tvContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edukasi isolasi mandiri sangat diperlukan bagi pasien Orang Dalam Pemantauan(ODP)"
-                    android:textColor="@android:color/black"
-                    android:textSize="10sp"
-                    android:layout_marginEnd="16dp"/>
-            </RelativeLayout>
-            <ProgressBar
-                android:id="@+id/pbContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-        <RelativeLayout
-            android:id="@+id/rlCamera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="178dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/lyCamera"
-                android:layout_width="match_parent"
-                android:layout_height="122dp"
-                android:gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:id="@+id/imgTapCamera"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginBottom="25dp"
-                        android:layout_marginStart="16dp"
-                        android:src="@drawable/ic_tap_camera" />
-
-                    <RelativeLayout
-                        android:layout_toEndOf="@+id/imgTapCamera"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="11dp"
-                        android:layout_marginBottom="11dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginStart="4dp">
-                        <TextView
-                            android:id="@+id/tvSelfie"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Selfie wajah terkini"
-                            android:textColor="@android:color/black"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:layout_marginBottom="8dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Upload dan bagikan selfie wajah dan keadaan isolasi mandiri kamu kepada gugus tugas COVID-19"
-                            android:layout_below="@+id/tvSelfie"
-                            android:textColor="@android:color/black"
-                            android:textSize="12sp"/>
+                        <LinearLayout
+                            android:id="@+id/lyNotifDot"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="3dp"
+                            android:background="@drawable/bg_red_circle"
+                            android:orientation="horizontal"
+                            android:visibility="gone"/>
                     </RelativeLayout>
-                    <Button
-                        android:id="@+id/btnUploadPhoto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="24dp"
-                        android:text="@string/unggah"
-                        android:textAllCaps="false"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
-                        android:textColor="@android:color/white"
-                        android:background="@drawable/bg_green_rounded"/>
-                    <TextView
-                        android:id="@+id/tvImageDesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tidak ada foto terkini"
-                        android:layout_alignParentBottom="true"
-                        android:layout_toStartOf="@+id/btnUploadPhoto"
-                        android:textSize="10dp"
-                        android:layout_marginBottom="14dp"
-                        android:layout_marginEnd="8dp"
-                        android:textColor="@android:color/black"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="315dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/lyLocation"
-                android:layout_width="match_parent"
-                android:layout_height="132dp"
-                android:gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/imgTapLocation"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginBottom="25dp"
-                        android:src="@drawable/ic_tap_location" />
 
                     <RelativeLayout
-                        android:layout_toEndOf="@+id/imgTapLocation"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="11dp"
-                        android:layout_marginBottom="11dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginStart="4dp">
+                        android:layout_height="wrap_content"
+                        android:paddingTop="33dp"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
                         <TextView
-                            android:id="@+id/tvKirim"
+                            android:id="@+id/tvName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Aktifkan lokasi isolasi mandiri kamu saat ini"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:layout_marginBottom="8dp"
+                            android:text="Hai, "
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvBagaimana"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvName"
+                            android:layout_marginTop="4dp"
+                            android:text="Bagaimana keadaanmu? Semoga sehat selalu ya."
+                            android:textColor="@android:color/white"
                             android:textSize="14sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Aktifkan lokasi isolasi kamu ssat ini, supaya gugus tugas COVID-19 dapat mengetahui lokasi kamu"
-                            android:layout_below="@+id/tvKirim"
-                            android:textColor="@android:color/black"
-                            android:textSize="12sp"/>
+
                     </RelativeLayout>
-                    <Button
-                        android:id="@+id/btnActivateLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="24dp"
-                        android:text="@string/aktifkan"
-                        android:textAllCaps="false"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
-                        android:textColor="@android:color/white"
-                        android:background="@drawable/bg_green_rounded"
-                        android:layout_below="@id/imgTapLocation"/>
-                    <Button
-                        android:id="@+id/btnInactiveLocation"
-                        android:visibility="gone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="24dp"
-                        android:text="@string/nonaktifkan"
-                        android:textAllCaps="false"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/colorPrimary"
-                        android:background="@drawable/bg_white_border_green_rounded"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="255dp"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp">
+
                     <TextView
-                        android:id="@+id/tvLocation"
+                        android:id="@+id/tvRekomendasi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tidak_ada_lokasi_terkini"
-                        android:layout_alignParentBottom="true"
-                        android:layout_toStartOf="@+id/btnActivateLocation"
-                        android:layout_toEndOf="@+id/imgTapLocation"
-                        android:textSize="10dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginBottom="14dp"
-                        android:layout_marginEnd="8dp"
+                        android:text="Rekomendasi Kegiatan"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"
                         android:textColor="@android:color/black"
-                        android:maxLines="1"
-                        android:textAlignment="textEnd"/>
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:layout_below="@+id/tvRekomendasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tips - tips kegiatan bermanfaat yang dapat dilakukan ketika isolasi mandiri dirumah agar tidak bosan"
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toStartOf="@+id/tvFoodHistory"/>
+                    <TextView
+                        android:id="@+id/tvFoodHistory"
+                        android:layout_below="@+id/tvRekomendasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/selanjutnya"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="12sp"
+                        android:clickable="true"/>
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+                <ProgressBar
+                    android:id="@+id/pbKegiatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvKegiatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="306dp"
+                    android:visibility="gone">
+
+                </androidx.recyclerview.widget.RecyclerView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="33dp"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/tvContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Konten Edukasi Isolasi Mandiri"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:layout_below="@+id/tvContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edukasi isolasi mandiri sangat diperlukan bagi pasien Orang Dalam Pemantauan(ODP)"
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp"
+                        android:layout_marginEnd="16dp"/>
+                </RelativeLayout>
+                <ProgressBar
+                    android:id="@+id/pbContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/rlCamera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="178dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/lyCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="122dp"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/imgTapCamera"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginBottom="25dp"
+                            android:layout_marginStart="16dp"
+                            android:src="@drawable/ic_tap_camera" />
+
+                        <RelativeLayout
+                            android:layout_toEndOf="@+id/imgTapCamera"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginBottom="11dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="4dp">
+                            <TextView
+                                android:id="@+id/tvSelfie"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Selfie wajah terkini"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:layout_marginBottom="8dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Upload dan bagikan selfie wajah dan keadaan isolasi mandiri kamu kepada gugus tugas COVID-19"
+                                android:layout_below="@+id/tvSelfie"
+                                android:textColor="@android:color/black"
+                                android:textSize="12sp"/>
+                        </RelativeLayout>
+                        <Button
+                            android:id="@+id/btnUploadPhoto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:text="@string/unggah"
+                            android:textAllCaps="false"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="8dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:textSize="12sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/bg_green_rounded"/>
+                        <TextView
+                            android:id="@+id/tvImageDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tidak ada foto terkini"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toStartOf="@+id/btnUploadPhoto"
+                            android:textSize="10dp"
+                            android:layout_marginBottom="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@android:color/black"/>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="315dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/lyLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="132dp"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imgTapLocation"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginBottom="25dp"
+                            android:src="@drawable/ic_tap_location" />
+
+                        <RelativeLayout
+                            android:layout_toEndOf="@+id/imgTapLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginBottom="11dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="4dp">
+                            <TextView
+                                android:id="@+id/tvKirim"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Aktifkan lokasi isolasi mandiri kamu saat ini"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/black"
+                                android:layout_marginBottom="8dp"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Aktifkan lokasi isolasi kamu ssat ini, supaya gugus tugas COVID-19 dapat mengetahui lokasi kamu"
+                                android:layout_below="@+id/tvKirim"
+                                android:textColor="@android:color/black"
+                                android:textSize="12sp"/>
+                        </RelativeLayout>
+                        <Button
+                            android:id="@+id/btnActivateLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:text="@string/aktifkan"
+                            android:textAllCaps="false"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="8dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:textSize="12sp"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/bg_green_rounded"/>
+                        <Button
+                            android:id="@+id/btnInactiveLocation"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:text="@string/nonaktifkan"
+                            android:textAllCaps="false"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="8dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorPrimary"
+                            android:background="@drawable/bg_white_border_green_rounded"/>
+                        <TextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tidak_ada_lokasi_terkini"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toStartOf="@+id/btnActivateLocation"
+                            android:layout_toEndOf="@+id/imgTapLocation"
+                            android:textSize="10dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginBottom="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@android:color/black"
+                            android:maxLines="1"
+                            android:textAlignment="textEnd"/>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp">
+        <RelativeLayout
+            android:id="@+id/btnEmergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="11dp"
+            android:paddingBottom="11dp"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:layout_toEndOf="@id/imgIconEmergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bantuan Darurat"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp"/>
+            <ImageView
+                android:id="@+id/imgIconEmergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_emergency"/>
         </RelativeLayout>
-    </FrameLayout>
-</androidx.core.widget.NestedScrollView>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
