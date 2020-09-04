@@ -60,6 +60,7 @@ public class CategoryFoodAdapter extends RecyclerView.Adapter<CategoryFoodAdapte
             public void onClick(View v) {
 //                InsightFragment insightFragment = new InsightFragment();
                 Toast.makeText(context, categoryFoodArrayList.get(position).getCategory(), Toast.LENGTH_SHORT).show();
+                
 //                InsightUtils.setCategory(context, categoryFoodArrayList.get(position).getCategory());
 
 //                if (!insightFragment.foodDataArrayList.isEmpty()){

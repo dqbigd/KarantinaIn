@@ -14,7 +14,7 @@ public class MessageResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private List<Message> data = null;
+    private List<MessageData> data = null;
 
     public String getCode() {
         return code;
@@ -32,11 +32,11 @@ public class MessageResponse {
         this.message = message;
     }
 
-    public List<Message> getData() {
+    public List<MessageData> getData() {
         return data;
     }
 
-    public void setData(List<Message> data) {
+    public void setData(List<MessageData> data) {
         this.data = data;
     }
 }

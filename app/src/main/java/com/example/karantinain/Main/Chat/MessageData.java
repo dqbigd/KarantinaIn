@@ -3,7 +3,7 @@ package com.example.karantinain.Main.Chat;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Message {
+public class MessageData {
     @SerializedName("_id")
     @Expose
     private String id;

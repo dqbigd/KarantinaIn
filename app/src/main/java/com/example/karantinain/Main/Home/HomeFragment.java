@@ -290,6 +290,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
                         dialog.dismiss();
                         tvImageDesc.setText("Foto telah diupdate");
                         btnUploadPhoto.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_grey_home_rounded));
+                        btnUploadPhoto.setEnabled(false);
                         Toast.makeText(getContext(), "Berhasil Upload foto terbaru", Toast.LENGTH_SHORT).show();
 
                         Log.d("isSuccessSHIT", response.body().getData().getImage());
