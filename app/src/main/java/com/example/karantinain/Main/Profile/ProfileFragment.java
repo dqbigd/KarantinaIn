@@ -37,6 +37,27 @@ public class ProfileFragment extends Fragment {
 
         setupProfileData();
 
+        view.findViewById(R.id.tvFoodHistory).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), FoodHistoryActivity.class));
+            }
+        });
+
+        view.findViewById(R.id.tvSportHistory).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SportHistoryActivity.class));
+            }
+        });
+
+        view.findViewById(R.id.lyEditAccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), EditAccountActivity.class));
+            }
+        });
+
         view.findViewById(R.id.btnLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

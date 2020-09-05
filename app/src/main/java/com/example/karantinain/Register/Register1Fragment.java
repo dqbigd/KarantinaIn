@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.karantinain.Login.ForgotPassword.VerifikasiFragment;
 import com.example.karantinain.R;
 
 import java.util.regex.Matcher;
@@ -34,7 +32,7 @@ public class Register1Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_register1, container, false);
 
         etFullName = view.findViewById(R.id.etFullName);
-        etEmail = view.findViewById(R.id.etEmail);
+        etEmail = view.findViewById(R.id.etPhoneNumber);
         etUsername = view.findViewById(R.id.etUsername);
         etPassword = view.findViewById(R.id.etPassword);
         etPhoneNumber = view.findViewById(R.id.etPhoneNumber);

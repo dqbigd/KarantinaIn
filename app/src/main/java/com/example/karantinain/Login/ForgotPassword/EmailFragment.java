@@ -17,10 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.karantinain.Api.InitRetrofit;
-import com.example.karantinain.Login.LoginActivity;
-import com.example.karantinain.Login.LoginResponse;
 import com.example.karantinain.R;
-import com.example.karantinain.Utils.SharedPrefManager;
 
 import java.util.Objects;
 
@@ -40,7 +37,7 @@ public class EmailFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_email, container, false);
 
-        etEmail = view.findViewById(R.id.etEmail);
+        etEmail = view.findViewById(R.id.etPhoneNumber);
         btnNext = (Button) view.findViewById(R.id.btnNext);
 
         btnNext.setOnClickListener(new View.OnClickListener() {

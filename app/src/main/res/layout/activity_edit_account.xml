@@ -69,28 +69,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/email"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="24dp"/>
-
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input_selector_bg"
-            android:hint="Contoh : nama@karantinain.com"
-            android:inputType="textEmailAddress"
-            android:paddingStart="14dp"
-            android:paddingTop="15dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="15dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/username"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -107,8 +85,30 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_hp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_selector_bg"
+            android:hint="Contoh : 08218345XXXX"
+            android:inputType="textEmailAddress"
+            android:paddingStart="14dp"
+            android:paddingTop="15dp"
             android:paddingEnd="14dp"
-            />
+            android:paddingBottom="15dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
