@@ -160,11 +160,70 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
         btnEmergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Emergency", Toast.LENGTH_SHORT).show();
+                sendDataEmergency();
+//                Toast.makeText(getContext(), "Emergency", Toast.LENGTH_SHORT).show();
             }
         });
 
         return view;
+    }
+
+    private void sendDataEmergency() {
+        String token = SharedPrefManager.getKeyToken(getContext());
+
+        Call<EmergencyResponse> call = InitRetrofit.getInstance().emergency(token);
+        call.enqueue(new Callback<EmergencyResponse>() {
+            @Override
+            public void onResponse(Call<EmergencyResponse> call, Response<EmergencyResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getMessage().equals("Ok.")){
+                        showEmergencyDialog();
+                        Log.d(TAG, SharedPrefManager.getIdProfile(getContext())+" : user ID : "+response.body().getData().getUserId());
+                    }
+                }else {
+                    Toast.makeText(getActivity(), "Terdapat gangguan pada server", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EmergencyResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "Gagal mengirimkan data emergency", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure: "+t.getMessage());
+            }
+        });
+//        call.enqueue(new Callback<LocationResponse>() {
+//            @Override
+//            public void onResponse(Call<LocationResponse> call, Response<LocationResponse> response) {
+//                if (response.isSuccessful()) {
+//                    if (response.body().getMessage().equals("Ok.")){
+//                        Log.d(TAG, "location update to API : "+latitude+", "+longitude);
+//                    }
+//                }else {
+//                    Toast.makeText(getActivity(), "Terdapat gangguan pada server", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<LocationResponse> call, Throwable t) {
+//                Toast.makeText(getActivity(), "Gagal mengirimkan lokasi terkini anda", Toast.LENGTH_SHORT).show();
+//                Log.d(TAG, "onFailure: "+t.getMessage());
+//            }
+//        });
+    }
+
+    private void showEmergencyDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Konfirmasi")
+                .setMessage("Petugas gugus tugas COVID-19 setempat akan segera menghubungi anda, jika ODP butuh perawatan intensif petugas akan langsung menuju lokasi anda")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+        });
+//        builder.create();
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void setupContentEducation() {

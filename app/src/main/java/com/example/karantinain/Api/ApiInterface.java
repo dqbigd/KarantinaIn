@@ -6,6 +6,7 @@ import com.example.karantinain.Login.ProfileResponse;
 import com.example.karantinain.Main.Chat.MessageResponse;
 import com.example.karantinain.Main.Chat.SendMessageResponse;
 import com.example.karantinain.Main.Home.ContentEducationResponse;
+import com.example.karantinain.Main.Home.EmergencyResponse;
 import com.example.karantinain.Main.Home.LocationResponse;
 import com.example.karantinain.Main.Home.RecommendActivityResponse;
 import com.example.karantinain.Main.Home.SelfieResponse;
@@ -71,6 +72,10 @@ public interface ApiInterface {
     Call<LocationResponse> location(@Header("Authorization") String token,
                                     @Field("latitude") String latitude,
                                     @Field("longitude") String longitude);
+
+    //Emergency (Home)
+    @POST("/emergency")
+    Call<EmergencyResponse> emergency(@Header("Authorization") String token);
 
     //Recommend Activity (Home)
     @GET("/activity")
