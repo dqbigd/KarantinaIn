@@ -143,6 +143,13 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
             }
         });
 
+        view.findViewById(R.id.imgBtnNotification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         tvSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.karantinain.Login.MenuLoginActivity;
@@ -37,6 +38,20 @@ public class ProfileFragment extends Fragment {
 
         setupProfileData();
 
+        view.findViewById(R.id.btnChooseFood).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        view.findViewById(R.id.btnChooseSport).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         view.findViewById(R.id.tvFoodHistory).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +67,13 @@ public class ProfileFragment extends Fragment {
         });
 
         view.findViewById(R.id.lyEditAccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), EditAccountActivity.class));
+            }
+        });
+
+        view.findViewById(R.id.imgBtnEditAccount).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), EditAccountActivity.class));

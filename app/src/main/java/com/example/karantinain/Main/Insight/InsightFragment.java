@@ -78,14 +78,14 @@ public class InsightFragment extends Fragment{
         setupCategoryFood();
         setupFood();
 
-        view.findViewById(R.id.tvRekomendasi).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!foodDataArrayList.isEmpty()){
-                    filter("buah");
-                }
-            }
-        });
+//        view.findViewById(R.id.tvRekomendasi).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!foodDataArrayList.isEmpty()){
+//                    filter("buah");
+//                }
+//            }
+//        });
 
         return view;
     }
