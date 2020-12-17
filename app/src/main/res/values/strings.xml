@@ -16,7 +16,7 @@
     <string name="jenis_kelamin">Jenis Kelamin</string>
 
     <!--    API KEY-->
-    <string name="google_maps_api">AIzaSyDXIWm5YmDtW2WDW6AeQeqeHtmxHLucKUM</string>
+    <string name="google_maps_api">APIKEY_GOOGLE_MAP_HERE</string>
 
     <!--    kumpulan array-->
     <string-array name="spin_gender">
