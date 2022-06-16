@@ -1,0 +1,831 @@
+{
+	"info": {
+		"_postman_id": "11a500cc-7f65-4d02-8a2a-39a4da4137e4",
+		"name": "KarantinaIn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8387223"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "hilih@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "hilihi",
+							"type": "text"
+						},
+						{
+							"key": "fullname",
+							"value": "hilih berhadiah",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Admin12#$",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "08534534512",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "laki laki",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "16",
+							"type": "text"
+						},
+						{
+							"key": "indication",
+							"value": "tidak ada",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "-7.42907893989639",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "112.70993918180466",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/auth/signup",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "dqdq",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Admin12#$",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/auth/signin",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoic3Vrcm9uLmJpZ2RzZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJjN2RiMmUwYmFkOTYzMzkzOTk4OTg0MDc3OGEzMDlhNCIsImlhdCI6MTU5OTU1ODMxMH0.Yw_zi-s4IhRyf1hwuDHH1ctBa4SAKIGR22lZDhAMCkg",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/user/profile",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forgot password",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "sukron.bigdsda@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/auth/forgot-password",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "sukron.bigdsda@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "482508",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Admin123$",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/auth/reset-password",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"reset-password"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin-admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "  2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/auth/signin-admin",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"signin-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rekomendasi kegiatan",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsdsdsdInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiI4YmE4OTdjNWJlYzVmMTg5YjQ0MjE5Y2EzYWM1NWU2ZiIsImlhdCI6MTU5Nzk5MTY1OH0.Gat0nD5IJYvEFgkDCMtAeM6s3gbblmvULLWzxcjX5-w",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/E:/Project/lomba n beasiswa/GEMASTIK 2020/asset/main/home/recommend activity/10.png"
+						},
+						{
+							"key": "title",
+							"value": "Mengikuti seminar atau acara - acara yang diadakan secara daring ataupun online",
+							"type": "text"
+						},
+						{
+							"key": "sumber",
+							"value": "loket.com",
+							"type": "text"
+						},
+						{
+							"key": "link",
+							"value": "https://www.loket.com/blog/rekomendasi-event-bulan-ini",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/activity",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rekomendasi kegiatan",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibGFwdG9wQGhwLmNvbSIsInBhc3N3b3JkIjoiYzdkYjJlMGJhZDk2MzM5Mzk5ODk4NDA3NzhhMzA5YTQiLCJpYXQiOjE1OTg2NzE3NTh9.MdaGCy5mL8DUlYSqjCqYg7BTjHXlSS09lkVKHPafAFo",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/activity",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "content education",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiI4YmE4OTdjNWJlYzVmMTg5YjQ0MjE5Y2EzYWM1NWU2ZiIsImlhdCI6MTU5Nzk5Mzc1OH0.ZUTb_bcnkMwSU8stt5yAYlkujIPgQrVgJnEZdDTVqqw",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/E:/Project/lomba n beasiswa/GEMASTIK 2020/asset/main/home/content education/5.png"
+						},
+						{
+							"key": "title",
+							"value": "Ketahui: Bagaimana orang sakit membaik dirawat di rumah",
+							"type": "text"
+						},
+						{
+							"key": "link",
+							"value": "https://covid19.go.id/edukasi/apa-yang-harus-kamu-ketahui-tentang-covid-19/ketahui-bagaimana-orang-sakit-membaik-dirawat-di-rumah",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/education",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"education"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "content education",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoic3Vrcm9uLmJpZ2RzZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJjN2RiMmUwYmFkOTYzMzkzOTk4OTg0MDc3OGEzMDlhNCIsImlhdCI6MTYxMDE1OTgwM30.-mUPYrAFTgftCGrvLDjxMzBZUolhzmwOQv-epa1deyI",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/education",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"education"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "location",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoic3Vrcm9uLmJpZ2RzZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJjN2RiMmUwYmFkOTYzMzkzOTk4OTg0MDc3OGEzMDlhNCIsImlhdCI6MTU5ODQ5OTM0N30.bbhWpqyqji7y-B3kNFgbS5SRSCOt4PEfONbPOoSkuRY",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "latitude",
+							"value": "645654",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "45354",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/location",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selfie",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoic3Vrcm9uLmJpZ2RzZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJjN2RiMmUwYmFkOTYzMzkzOTk4OTg0MDc3OGEzMDlhNCIsImlhdCI6MTU5ODYwODgyOH0.Dht5edyRUOtBO6FPwVnWvoR_hW29ZZfbuB-eGVXZYB8",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/selfie",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"selfie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Food",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoic3Vrcm9uLmJpZ2RzZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJjN2RiMmUwYmFkOTYzMzkzOTk4OTg0MDc3OGEzMDlhNCIsImlhdCI6MTYxMDE1OTgwM30.-mUPYrAFTgftCGrvLDjxMzBZUolhzmwOQv-epa1deyI",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/food",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"food"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Food",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiI4YmE4OTdjNWJlYzVmMTg5YjQ0MjE5Y2EzYWM1NWU2ZiIsImlhdCI6MTU5OTA5NTk5Mn0.ERGv-lCz4iSE6psl9y8nYMdDrF52rJZLzTEcuxxlxUQ",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Wortel",
+							"type": "text"
+						},
+						{
+							"key": "link",
+							"value": "https://www.alodokter.com/mengaplikasikan-khasiat-jus-wortel-pada-konsumsi-harian-anda",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "sayur",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Simak penjelasan manfaat Wortel dari para ahli gizi",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/E:/Project/lomba n beasiswa/GEMASTIK 2020/asset/main/insight/food/9.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/food",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"food"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "youtube",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibGFwdG9wQGhwLmNvbSIsInBhc3N3b3JkIjoiYzdkYjJlMGJhZDk2MzM5Mzk5ODk4NDA3NzhhMzA5YTQiLCJpYXQiOjE1OTg4NDYyMjN9.WlJNbaqbmzV3_ur5yCpPIXnVVfCzxgpMjH6pN-oyVu4",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/youtube",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"youtube"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "youtube",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibGFwdG9wQGhwLmNvbSIsInBhc3N3b3JkIjoiYzdkYjJlMGJhZDk2MzM5Mzk5ODk4NDA3NzhhMzA5YTQiLCJpYXQiOjE1OTg4NDYyMjN9.WlJNbaqbmzV3_ur5yCpPIXnVVfCzxgpMjH6pN-oyVu4",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "AHLI IMUNOLOGI: Covid-19 Akan Lenyap Kalau Imun Tinggi? #Hidup Sehat",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/E:/Project/lomba n beasiswa/GEMASTIK 2020/asset/main/insight/video/6.png"
+						},
+						{
+							"key": "url",
+							"value": "https://www.youtube.com/watch?v=jBm_BGQwvfA",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/youtube",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"youtube"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chat",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoic3Vrcm9uLmJpZ2RzZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJjN2RiMmUwYmFkOTYzMzkzOTk4OTg0MDc3OGEzMDlhNCIsImlhdCI6MTU5OTA1MzY3OH0.3NLXI9ykXN_E1BaopByAkKIEO5UmLDy0V6MnXqiqlRw",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "message",
+							"value": "ar u ready?",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/chat",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "emergency",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoic3Vrcm9uLmJpZ2RzZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJjN2RiMmUwYmFkOTYzMzkzOTk4OTg0MDc3OGEzMDlhNCIsImlhdCI6MTU5OTQ3MDc2N30.31viIqdr2mexDyYEphk6Tibq1TXDhBiX6Ds-BPYpMz8",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://nodelug.herokuapp.com/emergency",
+					"protocol": "https",
+					"host": [
+						"nodelug",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"emergency"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
